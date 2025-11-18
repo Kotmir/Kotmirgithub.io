@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила для администрации - Lumix Minecraft сервер</title>
+    
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    
+    <!-- Open Graph разметка -->
+    <meta property="og:title" content="Правила для администрации - Lumix Minecraft сервер">
+    <meta property="og:description" content="Правила и кодекс поведения для администрации сервера Lumix">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://kotmir.github.io/Kotmirgithub.io/admin-rules.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumix">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Правила для администрации - Lumix Minecraft сервер">
+    <meta name="twitter:description" content="Правила и кодекс поведения для администрации сервера Lumix">
+    <meta name="twitter:image" content="img/logo.jpg">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="Правила для администрации сервера Lumix - кодекс поведения, обязанности, ограничения">
+    <meta name="keywords" content="minecraft, администрация, правила, lumix, сервер, модерация">
+    
+    <!-- Стили и шрифты -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Уникальные стили для страницы правил администрации */
+        .admin-rules-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .admin-category {
+            margin-bottom: 40px;
+        }
+        
+        .admin-rule-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .admin-rule-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .admin-rule-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
+        }
+        
+        .admin-rule-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .admin-rule-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .admin-rule-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .rule-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(42, 42, 42, 0.4);
+            border-radius: 8px;
+            border-left: 3px solid;
+            transition: all 0.3s ease;
+        }
+        
+        .rule-point:hover {
+            background: rgba(42, 42, 42, 0.6);
+            transform: translateX(5px);
+        }
+        
+        .rule-point-icon {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-top: 2px;
+            min-width: 20px;
+        }
+        
+        .rule-point-content {
+            flex: 1;
+        }
+        
+        .rule-point-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--accent-light);
+        }
+        
+        .rule-point-description {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        
+        /* Цветовые схемы для категорий */
+        .category-principles {
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .category-principles .admin-rule-header {
+            border-bottom-color: #3b82f6;
+        }
+        
+        .category-principles .admin-rule-icon {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+        }
+        
+        .category-behavior {
+            border-left: 4px solid #10b981;
+        }
+        
+        .category-behavior .admin-rule-header {
+            border-bottom-color: #10b981;
+        }
+        
+        .category-behavior .admin-rule-icon {
+            background: linear-gradient(135deg, #10b981, #34d399);
+        }
+        
+        .category-tools {
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .category-tools .admin-rule-header {
+            border-bottom-color: #f59e0b;
+        }
+        
+        .category-tools .admin-rule-icon {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+        }
+        
+        .category-intervention {
+            border-left: 4px solid #8b5cf6;
+        }
+        
+        .category-intervention .admin-rule-header {
+            border-bottom-color: #8b5cf6;
+        }
+        
+        .category-intervention .admin-rule-icon {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+        }
+        
+        .category-punishments {
+            border-left: 4px solid #ef4444;
+        }
+        
+        .category-punishments .admin-rule-header {
+            border-bottom-color: #ef4444;
+        }
+        
+        .category-punishments .admin-rule-icon {
+            background: linear-gradient(135deg, #ef4444, #f87171);
+        }
+        
+        .category-communication {
+            border-left: 4px solid #06b6d4;
+        }
+        
+        .category-communication .admin-rule-header {
+            border-bottom-color: #06b6d4;
+        }
+        
+        .category-communication .admin-rule-icon {
+            background: linear-gradient(135deg, #06b6d4, #22d3ee);
+        }
+        
+        .warning-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(129, 140, 248, 0.1));
+            border: 2px solid #6366f1;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .warning-icon {
+            font-size: 3rem;
+            color: #6366f1;
+            margin-bottom: 20px;
+        }
+        
+        .warning-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 10px;
+        }
+        
+        .warning-subtext {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Кнопка мобильного меню -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Боковая навигация -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                <div class="logo-text">Lumix</div>
+            </div>
+            <div class="sidebar-theme-toggle">
+                <button class="theme-btn" id="themeToggle" title="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Главное меню -->
+        <div class="nav-main">
+            <!-- Правила -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-gavel"></i> Правила</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="rules.html"><i class="fas fa-balance-scale"></i> Политика сервера</a></li>
+                    <li><a href="punishments.html"><i class="fas fa-exclamation-triangle"></i> Система наказаний</a></li>
+                    <li><a href="admin-rules.html"><i class="fas fa-user-shield"></i> Для администрации</a></li>
+                    <li><a href="guide-rules.html"><i class="fas fa-user-graduate"></i> Для проводников</a></li>
+                </ul>
+            </div>
+
+            <!-- Крафты -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-hammer"></i> Крафты</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="crafts.html"><i class="fas fa-tools"></i> Уникальные крафты</a></li>
+                    <li><a href="brewery.html"><i class="fas fa-wine-bottle"></i> Brewery</a></li>
+                </ul>
+            </div>
+            
+            <!-- Игровой процесс -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-gamepad"></i> Игровой процесс</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="behavior.html"><i class="fas fa-palette"></i> Ман-Арты и картины</a></li>
+                    <li><a href="features.html"><i class="fas fa-star"></i> Фишки сервера</a></li>
+                    <li><a href="kingdom.html"><i class="fas fa-crown"></i> Королевство</a></li>
+                </ul>
+            </div>
+            
+            <!-- Команды -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-terminal"></i> Команды</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="commands.html"><i class="fas fa-list"></i> Все команды</a></li>
+                    <li><a href="chat.html"><i class="fas fa-comments"></i> Чат и взаимодействие</a></li>
+                </ul>
+            </div>
+            
+            <!-- Сообщество -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-users"></i> Сообщество</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="history.html"><i class="fas fa-history"></i> История сервера</a></li>
+                    <li><a href="team.html"><i class="fas fa-users-cog"></i> Команда сервера</a></li>
+                    <li><a href="content-creator.html"><i class="fas fa-video"></i> Контент-мейкеры</a></li>
+                    <li><a href="moderator.html"><i class="fas fa-user-shield"></i> Стать модератором</a></li>
+                </ul>
+            </div>
+            
+            <!-- Магазин и услуги -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-shopping-cart"></i> Магазин</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="shop.html"><i class="fas fa-gem"></i> Донат услуги</a></li>
+                   
+                </ul>
+            </div>
+            
+            <!-- Техническое -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-cogs"></i> Техническое</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="mods.html"><i class="fas fa-plug"></i> Модификации</a></li>
+                    <li><a href="resourcepack.html"><i class="fas fa-paint-brush"></i> РесурсПак</a></li>
+                </ul>
+            </div>
+            
+            <!-- Дополнительное -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-plus-circle"></i> Дополнительное</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="additional.html"><i class="fas fa-info-circle"></i> Доп. информация</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Быстрые ссылки -->
+        <div class="sidebar-quick-links">
+            <div class="quick-links-title">Быстрые ссылки</div>
+            <div class="quick-links">
+                <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Магазин</span>
+                </a>
+                <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+                    <i class="fas fa-map"></i>
+                    <span>Карта мира</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <!-- Заголовок страницы -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="section-title">Правила для администрации</h1>
+                <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 40px;">
+                    Кодекс поведения и профессиональные стандарты для членов администрации сервера Lumix. 
+                    Соблюдение этих правил обязательно для всех, кто обладает административными правами.
+                </p>
+            </div>
+        </section>
+
+        <!-- Основной контент правил -->
+        <section class="section">
+            <div class="container">
+                <div class="admin-rules-container">
+                    
+                    <!-- Общие принципы -->
+                    <div class="admin-category">
+                        <div class="admin-rule-card category-principles">
+                            <div class="admin-rule-header">
+                                <div class="admin-rule-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h2 class="admin-rule-title">Общие принципы</h2>
+                            </div>
+                            <div class="admin-rule-content">
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-user-shield"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Администратор — не бог</div>
+                                        <div class="rule-point-description">
+                                            Выдача себе ресурсов, использование гейм-модов (creative/spectator), телепортация и вмешательство в игровой процесс без необходимости запрещены.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Никакого фаворитизма</div>
+                                        <div class="rule-point-description">
+                                            Все игроки равны. Не допускается "помощь" друзьям, участникам города и т.п., если она даёт преимущество.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Соблюдай прозрачность</div>
+                                        <div class="rule-point-description">
+                                            В случае вмешательства в игровой процесс (например, помощь при баге), игрок должен быть уведомлён о причине и сути вмешательства.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поведение -->
+                    <div class="admin-category">
+                        <div class="admin-rule-card category-behavior">
+                            <div class="admin-rule-header">
+                                <div class="admin-rule-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h2 class="admin-rule-title">Поведение</h2>
+                            </div>
+                            <div class="admin-rule-content">
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Будь примером</div>
+                                        <div class="rule-point-description">
+                                            Соблюдай правила сервера, будь вежлив с игроками, даже в конфликтных ситуациях.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-ban"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Без токсичности и провокаций</div>
+                                        <div class="rule-point-description">
+                                            Сарказм, агрессия, игнор, личные конфликты — недопустимы для администрации.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Конфиденциальность</div>
+                                        <div class="rule-point-description">
+                                            Вся внутренняя информация об игроках, модерации, наказаниях и вайтлистах — не выносится за пределы админ-обсуждений.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Админ-доступ и инструменты -->
+                    <div class="admin-category">
+                        <div class="admin-rule-card category-tools">
+                            <div class="admin-rule-header">
+                                <div class="admin-rule-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h2 class="admin-rule-title">Админ-доступ и инструменты</h2>
+                            </div>
+                            <div class="admin-rule-content">
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-magic"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Creative / Spectator режим</div>
+                                        <div class="rule-point-description">
+                                            Разрешён только для технической проверки, жалоб, нарушений, при согласовании с другими администраторами или для съёмки контента.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-terminal"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Команды телепортации, выдачи, убийства</div>
+                                        <div class="rule-point-description">
+                                            Используются только по необходимости (модерация, баги, тесты).
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-clipboard-list"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Логи, плагины, консоль</div>
+                                        <div class="rule-point-description">
+                                            Использование должно быть обоснованным, логичным и фиксироваться при необходимости (для отчёта или истории действий).
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Вмешательство -->
+                    <div class="admin-category">
+                        <div class="admin-rule-card category-intervention">
+                            <div class="admin-rule-header">
+                                <div class="admin-rule-icon">
+                                    <i class="fas fa-hand-paper"></i>
+                                </div>
+                                <h2 class="admin-rule-title">Вмешательство</h2>
+                            </div>
+                            <div class="admin-rule-content">
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-user-clock"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Не вмешиваться в игрока без причины</div>
+                                        <div class="rule-point-description">
+                                            Если нет жалобы, бага или грубого нарушения — игроки играют как хотят, даже если это кажется "неэффективным" или "странным".
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-peace"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Не участвовать в политике и конфликтах</div>
+                                        <div class="rule-point-description">
+                                            Администрация не создаёт кланы, не лоббирует города, не участвует в RP-войнах и т.д.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Уважай вайтлист</div>
+                                        <div class="rule-point-description">
+                                            Если ты занимаешься вайтлистингом, проверяй игроков строго, но честно. Не "протаскивай" знакомых.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Наказания -->
+                    <div class="admin-category">
+                        <div class="admin-rule-card category-punishments">
+                            <div class="admin-rule-header">
+                                <div class="admin-rule-icon">
+                                    <i class="fas fa-gavel"></i>
+                                </div>
+                                <h2 class="admin-rule-title">Наказания</h2>
+                            </div>
+                            <div class="admin-rule-content">
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-scale-balanced"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Наказания должны быть обоснованными</div>
+                                        <div class="rule-point-description">
+                                            Не выдавай мут/бан/кик без причины. Всегда указывай аргументы и, по возможности, сообщай игроку суть нарушения.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Если не уверен — посоветуйся</div>
+                                        <div class="rule-point-description">
+                                            Лучше переспросить у коллег, чем допустить несправедливое решение.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Коммуникация -->
+                    <div class="admin-category">
+                        <div class="admin-rule-card category-communication">
+                            <div class="admin-rule-header">
+                                <div class="admin-rule-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <h2 class="admin-rule-title">Коммуникация</h2>
+                            </div>
+                            <div class="admin-rule-content">
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-wifi"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Будь на связи</div>
+                                        <div class="rule-point-description">
+                                            Администратор должен время от времени быть активным в Discord и в курсе новостей проекта.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rule-point">
+                                    <div class="rule-point-icon">
+                                        <i class="fas fa-hands-helping"></i>
+                                    </div>
+                                    <div class="rule-point-content">
+                                        <div class="rule-point-title">Поддержка игроков — важна</div>
+                                        <div class="rule-point-description">
+                                            Если игрок задаёт вопрос, обращается за помощью или хочет что-то обсудить — реагируй с уважением, даже если это не твоя "зона ответственности".
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Важное предупреждение -->
+                    <div class="warning-card">
+                        <div class="warning-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="warning-text">
+                            Нарушение данных правил администрацией может привести к снятию роли, независимо от заслуг
+                        </div>
+                        <div class="warning-subtext">
+                            Администрация обязана быть примером для всех игроков и соблюдать высочайшие стандарты поведения
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Футер -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <div class="footer-logo">
+                            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                            Lumix
+                        </div>
+                        <p style="color: var(--text-secondary);">Около-ванильный Minecraft сервер с уникальными механиками и дружелюбным сообществом.</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Навигация</h4>
+                        <div class="footer-links">
+                            <a href="index.html">Главная</a>
+                            <a href="commands.html">Команды</a>
+                            <a href="content-creator.html">Контент-мейкеры</a>
+                            <a href="rules.html">Правила</a>
+                            <a href="admin-rules.html">Для администрации</a>
+                            <a href="shop.html">Магазин</a>
+                            <a href="moderator.html">Стать модератором</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Ссылки</h4>
+                        <div class="footer-links">
+                            <a href="https://discord.gg/WHtWNdej2j">Discord</a>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                            <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
+                            <a href="https://t.me/lumixsmp">Telegram</a>
+                            <a href="http://193.23.199.39:25820/">Карта мира</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 Lumix. Все права защищены.<br>
+                    Сервер не аффилирован с Mojang Studios. Minecraft является товарным знаком Mojang Studios.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Закрытие меню при клике на контент на мобильных устройствах
+        if (window.innerWidth <= 1024) {
+            mainContent.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+        }
+
+        // Аккордеон для боковой панели
+        const navSections = document.querySelectorAll('.nav-section-title');
+
+        navSections.forEach(section => {
+            section.addEventListener('click', () => {
+                const parent = section.parentElement;
+                // Закрываем все остальные секции
+                document.querySelectorAll('.nav-section').forEach(sec => {
+                    if (sec !== parent) {
+                        sec.classList.remove('active');
+                    }
+                });
+                // Открываем/закрываем текущую
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Подсветка активной страницы
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-subitems a');
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+                // Автоматически открываем родительскую секцию
+                const parentSection = link.closest('.nav-section');
+                if (parentSection) {
+                    parentSection.classList.add('active');
+                }
+            }
+        });
+
+        // Переключение темы
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+
+        // Применяем сохраненную тему
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+
+        // Автоматически открываем активный раздел при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeLinks = document.querySelectorAll('.nav-subitems a.active');
+            activeLinks.forEach(link => {
+                const parentSection = link.closest('.nav-section');
+                if (parentSection) {
+                    parentSection.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

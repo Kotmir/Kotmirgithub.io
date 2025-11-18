@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контент-мейкеры - Lumix Minecraft сервер</title>
+    
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    
+    <!-- Open Graph разметка -->
+    <meta property="og:title" content="Контент-мейкеры - Lumix Minecraft сервер">
+    <meta property="og:description" content="Информация для контент-мейкеров сервера Lumix">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://kotmir.github.io/Kotmirgithub.io/content-creator.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumix">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Контент-мейкеры - Lumix Minecraft сервер">
+    <meta name="twitter:description" content="Информация для контент-мейкеров сервера Lumix">
+    <meta name="twitter:image" content="img/logo.jpg">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="Информация для контент-мейкеров сервера Lumix - требования, преимущества, как стать">
+    <meta name="keywords" content="minecraft, контент-мейкеры, lumix, сервер, майнкрафт, ютуб, твич">
+    
+    <!-- Стили и шрифты -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+
+
+
+        .creator-profile-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.creator-profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.platform-link {
+    transition: transform 0.3s ease;
+}
+
+.platform-link:hover {
+    transform: scale(1.2);
+}
+
+.stat-item {
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+}
+
+        /* Уникальные стили для страницы контент-мейкеров */
+        .content-creator-section {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            border-radius: 15px;
+            padding: 50px;
+            margin: 60px 0;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .content-creator-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+        
+        .creator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .creator-card {
+            background: rgba(26, 26, 26, 0.7);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .creator-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .creator-list {
+            list-style: none;
+        }
+        
+        .creator-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .creator-list li:before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .creator-apply {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .platform-card {
+            background: rgba(42, 42, 42, 0.4);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        
+        .platform-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .youtube-icon {
+            color: #FF0000;
+        }
+        
+        .twitch-icon {
+            color: #9146FF;
+        }
+        
+        .tiktok-icon {
+            color: #000000;
+        }
+
+
+        .apply-btn-enhanced {
+    display: inline-block;
+    position: relative;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: white;
+    text-decoration: none;
+    padding: 18px 40px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 
+        0 8px 25px rgba(201, 95, 91, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    text-align: center;
+    min-width: 280px;
+}
+
+.apply-btn-enhanced:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 15px 35px rgba(201, 95, 91, 0.4),
+        0 5px 15px rgba(129, 140, 248, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, var(--accent-hover), var(--accent-light));
+}
+
+.apply-btn-enhanced:active {
+    transform: translateY(-1px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+.btn-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-icon {
+    font-size: 1.3rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-text {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.btn-arrow {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+    opacity: 0.9;
+}
+
+.apply-btn-enhanced:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+.apply-btn-enhanced:hover .btn-icon {
+    transform: scale(1.1);
+}
+
+.btn-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.8s ease;
+    z-index: 1;
+}
+
+.apply-btn-enhanced:hover .btn-glow {
+    left: 100%;
+}
+
+/* Анимация пульсации для привлечения внимания */
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 
+            0 8px 25px rgba(201, 95, 91, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 8px 30px rgba(201, 95, 91, 0.5),
+            0 0 0 1px rgba(255, 255, 255, 0.15),
+            0 0 20px rgba(201, 95, 91, 0.3);
+    }
+}
+
+.apply-btn-enhanced {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .apply-btn-enhanced {
+        padding: 16px 30px;
+        font-size: 1rem;
+        min-width: 250px;
+    }
+    
+    .btn-content {
+        gap: 10px;
+    }
+    
+    .btn-icon {
+        font-size: 1.2rem;
+    }
+}
+
+/* Для светлой темы */
+body.light-theme .apply-btn-enhanced {
+    box-shadow: 
+        0 8px 25px rgba(201, 95, 91, 0.2),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .apply-btn-enhanced:hover {
+    box-shadow: 
+        0 15px 35px rgba(201, 95, 91, 0.3),
+        0 5px 15px rgba(129, 140, 248, 0.2),
+        0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Кнопка мобильного меню -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+   <!-- Кнопка мобильного меню -->
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Боковая навигация -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">
+            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+            <div class="logo-text">Lumix</div>
+        </div>
+        <div class="sidebar-theme-toggle">
+            <button class="theme-btn" id="themeToggle" title="Сменить тему">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Главное меню -->
+    <div class="nav-main">
+        <!-- Правила -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gavel"></i> Правила</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="rules.html"><i class="fas fa-balance-scale"></i> Политика сервера</a></li>
+                <li><a href="punishments.html"><i class="fas fa-exclamation-triangle"></i> Система наказаний</a></li>
+                <li><a href="admin-rules.html"><i class="fas fa-user-shield"></i> Для администрации</a></li>
+                <li><a href="guide-rules.html"><i class="fas fa-user-graduate"></i> Для проводников</a></li>
+            </ul>
+        </div>
+
+        <!-- Крафты -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-hammer"></i> Крафты</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="crafts.html"><i class="fas fa-tools"></i> Уникальные крафты</a></li>
+                <li><a href="brewery.html"><i class="fas fa-wine-bottle"></i> Brewery</a></li>
+            </ul>
+        </div>
+        
+        <!-- Игровой процесс -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gamepad"></i> Игровой процесс</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="behavior.html"><i class="fas fa-palette"></i> Ман-Арты и картины</a></li>
+                <li><a href="features.html"><i class="fas fa-star"></i> Фишки сервера</a></li>
+                <li><a href="kingdom.html"><i class="fas fa-crown"></i> Королевство</a></li>
+            </ul>
+        </div>
+        
+        <!-- Команды -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-terminal"></i> Команды</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="commands.html"><i class="fas fa-list"></i> Все команды</a></li>
+                <li><a href="chat.html"><i class="fas fa-comments"></i> Чат и взаимодействие</a></li>
+            </ul>
+        </div>
+        
+        <!-- Сообщество -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-users"></i> Сообщество</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="history.html"><i class="fas fa-history"></i> История сервера</a></li>
+                <li><a href="team.html"><i class="fas fa-users-cog"></i> Команда сервера</a></li>
+                <li><a href="content-creator.html"><i class="fas fa-video"></i> Контент-мейкеры</a></li>
+                <li><a href="moderator.html"><i class="fas fa-user-shield"></i> Стать модератором</a></li>
+            </ul>
+        </div>
+        
+        <!-- Магазин и услуги -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-shopping-cart"></i> Магазин</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="shop.html"><i class="fas fa-gem"></i> Донат услуги</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Техническое -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-cogs"></i> Техническое</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="mods.html"><i class="fas fa-plug"></i> Модификации</a></li>
+                <li><a href="resourcepack.html"><i class="fas fa-paint-brush"></i> РесурсПак</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Дополнительное -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-plus-circle"></i> Дополнительное</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="additional.html"><i class="fas fa-info-circle"></i> Доп. информация</a></li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Быстрые ссылки -->
+    <div class="sidebar-quick-links">
+        <div class="quick-links-title">Быстрые ссылки</div>
+        <div class="quick-links">
+            <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+            </a>
+            <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Магазин</span>
+            </a>
+            <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+                <i class="fas fa-map"></i>
+                <span>Карта мира</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <!-- Заголовок страницы -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="section-title">Контент-мейкеры</h1>
+                <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 40px;">
+                    Создание видео или стримов очень сильно поддерживает наш сервер. Контент-мейкер - это любой человек, создающий какой-либо контент на сервере, делясь с ним в социальных сетях.
+                </p>
+            </div>
+        </section>
+
+        <!-- Информация о контент-мейкерах -->
+        <section class="section">
+            <div class="container">
+                <div class="content-creator-section">
+                    <div class="moderator-content">
+                        <div class="creator-grid">
+                            <div class="creator-card">
+                                <h3 class="creator-title"><i class="fas fa-play-circle"></i> Что такое контент-мейкер?</h3>
+                                <ul class="creator-list">
+                                    <li>Стример на платформе Twitch</li>
+                                    <li>Создатель видео на платформе YouTube</li>
+                                    <li>Стример на платформе YouTube</li>
+                                    <li>Создатель контента в TikTok</li>
+                                    <li>Любой человек, создающий контент на сервере</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="creator-card">
+                                <h3 class="creator-title"><i class="fas fa-check-circle"></i> Требования</h3>
+                                <ul class="creator-list">
+                                    <li>Качественный и нескучный контент</li>
+                                    <li>Адекватный ролик без запрещенных материалов</li>
+                                    <li>Интересный контент по оценке администрации</li>
+                                    <li>Ограничений по количеству подписчиков НЕТ!</li>
+                                    <li>Платформы: YouTube, Twitch, TikTok</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="creator-card">
+                                <h3 class="creator-title"><i class="fas fa-star"></i> Преимущества</h3>
+                                <ul class="creator-list">
+                                    <li>Выделяющая роль в Discord</li>
+                                    <li>Право выкладывать видео в канал "медийка"</li>
+                                    <li>Выделяющая привилегия на сервере</li>
+                                    <li>Право выкладывать объявления на сервере</li>
+                                    <li>Более ближняя связь с администрацией</li>
+                                    <li>Канал будет опубликован на википедии</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Поддерживаемые платформы -->
+        <section class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">Поддерживаемые платформы</h2>
+                
+                <div class="platforms-grid">
+                    <div class="platform-card">
+                        <div class="platform-icon youtube-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h3>YouTube</h3>
+                        <p>Видео и стримы</p>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-icon twitch-icon">
+                            <i class="fab fa-twitch"></i>
+                        </div>
+                        <h3>Twitch</h3>
+                        <p>Прямые трансляции</p>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-icon tiktok-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <h3>TikTok</h3>
+                        <p>Короткие видео</p>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Другие</h3>
+                        <p>По согласованию</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Наши контент-мейкеры -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Наши контент-мейкеры</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 20px auto 40px;">
+            Талантливые создатели, которые делятся своим творчеством и делают наше сообщество ярче. 
+            Поддержите их, подписавшись на их каналы!
+        </p>
+        
+        <div class="creator-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px;">
+            <!-- Карточка kotmir -->
+            <div class="creator-profile-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 25px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+                <div class="creator-avatar" style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 style="color: var(--accent-light); margin-bottom: 10px; font-size: 1.3rem;">kotmir</h3>
+                <div class="creator-platforms" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                    <a href="https://www.youtube.com/@kotmir" class="platform-link" style="color: #FF0000; font-size: 1.5rem;" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.twitch.tv/kotmir" class="platform-link" style="color: #9146FF; font-size: 1.5rem;" title="Twitch">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                    <a href="https://t.me/kotmiter" class="platform-link" style="color: #0088cc; font-size: 1.5rem;" title="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Создатель интересного контента по Minecraft</p>
+            </div>
+
+            <!-- Карточка Gerint -->
+            <div class="creator-profile-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 25px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+                <div class="creator-avatar" style="width: 80px; height: 80px; background: linear-gradient(135deg, #FF6B6B, #FFA726); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 style="color: var(--accent-light); margin-bottom: 10px; font-size: 1.3rem;">Gerint</h3>
+                <div class="creator-platforms" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                    <a href="https://www.twitch.tv/gerint999" class="platform-link" style="color: #9146FF; font-size: 1.5rem;" title="Twitch">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                    <a href="https://t.me/+3DzpLHz6WJU5ZDk6" class="platform-link" style="color: #0088cc; font-size: 1.5rem;" title="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Стример с увлекательными трансляциями</p>
+            </div>
+
+            <!-- Карточка lvmir -->
+            <div class="creator-profile-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 25px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+                <div class="creator-avatar" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4ECDC4, #556270); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 style="color: var(--accent-light); margin-bottom: 10px; font-size: 1.3rem;">has1cks</h3>
+                <div class="creator-platforms" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                   
+                    </a>
+                    <a href="https://www.twitch.tv/has1cks" class="platform-link" style="color: #9146FF; font-size: 1.5rem;" title="Twitch">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                    <a href="https://t.me/has1cklive" class="platform-link" style="color: #0088cc; font-size: 1.5rem;" title="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Мультиплатформенный создатель контента</p>
+            </div>
+<!-- Карточка epicgromee -->
+<div class="creator-profile-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 25px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+    <div class="creator-avatar" style="width: 80px; height: 80px; background: linear-gradient(135deg, #556270, #FF6B6B); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+        <i class="fas fa-user"></i>
+    </div>
+    <h3 style="color: var(--accent-light); margin-bottom: 10px; font-size: 1.3rem;">epicgromee</h3>
+    <div class="creator-platforms" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+        <a href="https://www.twitch.tv/epicgromee" class="platform-link" style="color: #9146FF; font-size: 1.5rem;" title="Twitch">
+            <i class="fab fa-twitch"></i>
+        </a>
+    </div>
+    <p style="color: var(--text-secondary); font-size: 0.9rem;">Стример с увлекательными трансляциями</p>
+</div>
+
+
+<!-- Карточка pakedon4ik -->
+<div class="creator-profile-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 25px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+    <div class="creator-avatar" style="width: 80px; height: 80px; background: linear-gradient(135deg, #FFA726, #FF6B6B); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+        <i class="fas fa-user"></i>
+    </div>
+    <h3 style="color: var(--accent-light); margin-bottom: 10px; font-size: 1.3rem;">pakedon4ik</h3>
+    <div class="creator-platforms" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+        <a href="https://www.twitch.tv/pakedon4ik" class="platform-link" style="color: #9146FF; font-size: 1.5rem;" title="Twitch">
+            <i class="fab fa-twitch"></i>
+        </a>
+    </div>
+    <p style="color: var(--text-secondary); font-size: 0.9rem;">Стример с увлекательными трансляциями</p>
+</div>
+
+<!-- Карточка anxdrya -->
+<div class="creator-profile-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 25px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+    <div class="creator-avatar" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4ECDC4, #556270); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+        <i class="fas fa-user"></i>
+    </div>
+    <h3 style="color: var(--accent-light); margin-bottom: 10px; font-size: 1.3rem;">anxdrya</h3>
+    <div class="creator-platforms" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+        <a href="https://www.twitch.tv/anxdrya" class="platform-link" style="color: #9146FF; font-size: 1.5rem;" title="Twitch">
+            <i class="fab fa-twitch"></i>
+        </a>
+    </div>
+    <p style="color: var(--text-secondary); font-size: 0.9rem;">Стример с увлекательными трансляциями</p>
+</div>
+            <!-- Карточка DauPosPiN -->
+            <div class="creator-profile-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 25px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+                <div class="creator-avatar" style="width: 80px; height: 80px; background: linear-gradient(135deg, #FF9A8B, #FF6A88); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 style="color: var(--accent-light); margin-bottom: 10px; font-size: 1.3rem;">superDOK</h3>
+                <div class="creator-platforms" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                    <a href="https://www.youtube.com/@superDOKminecraft" class="platform-link" style="color: #FF0000; font-size: 1.5rem;" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.twitch.tv/superdok_live" class="platform-link" style="color: #9146FF; font-size: 1.5rem;" title="Twitch">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                    <a href=" https://t.me/superDOK20019" class="platform-link" style="color: #0088cc; font-size: 1.5rem;" title="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Активный стример и создатель видео</p>
+            </div>
+        </div>
+
+
+        
+
+        <!-- Статистика -->
+        <div class="creator-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 50px; text-align: center;">
+            <div class="stat-item" style="background: rgba(42, 42, 42, 0.4); padding: 20px; border-radius: 10px; border: 1px solid var(--border);">
+                <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--accent-light); margin-bottom: 10px;">4</div>
+                <div class="stat-label" style="color: var(--text-secondary);">Активных создателя</div>
+            </div>
+            <div class="stat-item" style="background: rgba(42, 42, 42, 0.4); padding: 20px; border-radius: 10px; border: 1px solid var(--border);">
+                <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--accent-light); margin-bottom: 10px;">3</div>
+                <div class="stat-label" style="color: var(--text-secondary);">Платформы</div>
+            </div>
+            <div class="stat-item" style="background: rgba(42, 42, 42, 0.4); padding: 20px; border-radius: 10px; border: 1px solid var(--border);">
+                <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--accent-light); margin-bottom: 10px;">∞</div>
+                <div class="stat-label" style="color: var(--text-secondary);">Возможностей</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Как стать контент-мейкером -->
+        <section class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">Как стать контент-мейкером</h2>
+                
+                <div class="creator-apply">
+    <h3 class="section-subtitle">▌ Как стать контент-мейкером Lumix?</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        После создания контента зайдите в Discord-сервер Lumix, найдите канал тикетов и подайте заявку по теме в канале «Вопросы». Расскажите о себе и прикрепите ссылку на видео/стрим.
+    </p>
+    
+    <!-- Улучшенная кнопка -->
+    <a href="https://discord.gg/WHtWNdej2j" class="apply-btn-enhanced" target="_blank">
+        <span class="btn-content">
+            <i class="fab fa-discord btn-icon"></i>
+            <span class="btn-text">Подать заявку на контент-мейкера</span>
+            <i class="fas fa-arrow-right btn-arrow"></i>
+        </span>
+        <span class="btn-glow"></span>
+    </a>
+    
+    <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">
+        <i class="fas fa-clock" style="margin-right: 5px;"></i>
+        Ожидание рассмотрения заявки: от часа до нескольких суток
+    </p>
+</div>
+                
+                <div class="steps" style="margin-top: 40px;">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Создайте контент</h3>
+                        <p>Снимите видео или проведите стрим на сервере Lumix. Убедитесь, что контент соответствует правилам сервера.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Подайте заявку</h3>
+                        <p>В Discord сервере создайте тикет и прикрепите ссылку на ваш контент с описанием.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Получите статус</h3>
+                        <p>После одобрения заявки вы получите статус контент-мейкера и все связанные с ним преимущества.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Футер -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <div class="footer-logo">
+                            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                            Lumix
+                        </div>
+                        <p style="color: var(--text-secondary);">Около-ванильный Minecraft сервер с уникальными механиками и дружелюбным сообществом.</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Навигация</h4>
+                        <div class="footer-links">
+                            <a href="index.html">Главная</a>
+                            <a href="commands.html">Команды</a>
+                            <a href="content-creator.html">Контент-мейкеры</a>
+                            <a href="rules.html">Правила</a>
+                            <a href="shop.html">Магазин</a>
+                            <a href="moderator.html">Стать модератором</a>
+                            <a href="mods.html">Запрещенные моды</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Ссылки</h4>
+                        <div class="footer-links">
+                            <a href="https://discord.gg/WHtWNdej2j">Discord</a>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                            <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
+                            <a href="https://t.me/lumixsmp">Telegram</a>
+                            <a href="http://193.23.199.39:25820/">Карта мира</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 Lumix. Все права защищены.<br>
+                    Сервер не аффилирован с Mojang Studios. Minecraft является товарным знаком Mojang Studios.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+ // Мобильное меню
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+
+mobileMenuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+// Закрытие меню при клике на контент на мобильных устройствах
+if (window.innerWidth <= 1024) {
+    mainContent.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+}
+
+// Аккордеон для боковой панели
+const navSections = document.querySelectorAll('.nav-section-title');
+
+navSections.forEach(section => {
+    section.addEventListener('click', () => {
+        const parent = section.parentElement;
+        // Закрываем все остальные секции
+        document.querySelectorAll('.nav-section').forEach(sec => {
+            if (sec !== parent) {
+                sec.classList.remove('active');
+            }
+        });
+        // Открываем/закрываем текущую
+        parent.classList.toggle('active');
+    });
+});
+
+// Подсветка активной страницы
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const navLinks = document.querySelectorAll('.nav-subitems a');
+
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+        // Автоматически открываем родительскую секцию
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    }
+});
+
+// Переключение темы
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Применяем сохраненную тему
+if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    
+    const isLight = document.body.classList.contains('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Автоматически открываем активный раздел при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const activeLinks = document.querySelectorAll('.nav-subitems a.active');
+    activeLinks.forEach(link => {
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    });
+});
+    </script>
+</body>
+</html>

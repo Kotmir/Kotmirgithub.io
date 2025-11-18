@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стать модератором - Lumix Minecraft сервер</title>
+    
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    
+    <!-- Open Graph разметка -->
+    <meta property="og:title" content="Стать модератором - Lumix Minecraft сервер">
+    <meta property="og:description" content="Присоединяйтесь к команде модераторов сервера Lumix">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://kotmir.github.io/Kotmirgithub.io/moderator.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumix">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Стать модератором - Lumix Minecraft сервер">
+    <meta name="twitter:description" content="Присоединяйтесь к команде модераторов сервера Lumix">
+    <meta name="twitter:image" content="img/logo.jpg">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="Станьте модератором сервера Lumix - требования, преимущества и процесс подачи заявки">
+    <meta name="keywords" content="minecraft, модератор, lumix, сервер, команда, заявка">
+    
+    <!-- Стили и шрифты -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Уникальные стили для страницы модератора */
+        .moderator-hero {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(42, 42, 42, 0.6));
+            border-radius: 15px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .moderator-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+        
+        .moderator-badge {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(201, 95, 91, 0.4);
+        }
+        
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .requirement-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .requirement-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .requirement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+        
+        .requirement-icon {
+            font-size: 2.5rem;
+            color: var(--accent-light);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .requirement-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .requirement-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        
+        .requirement-list li:before {
+            content: "✓";
+            color: var(--success);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .career-path {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .career-step {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .career-step:hover {
+            transform: translateY(-3px);
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 15px;
+            font-size: 1.1rem;
+        }
+        
+        .step-title {
+            color: var(--accent-light);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .benefits-section {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(42, 42, 42, 0.6));
+            border-radius: 15px;
+            padding: 50px;
+            margin: 60px 0;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .benefits-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: rgba(26, 26, 26, 0.7);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .benefit-icon {
+            font-size: 2rem;
+            color: var(--accent-light);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .application-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .process-step {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .process-icon {
+            font-size: 3rem;
+            color: var(--accent-light);
+            margin-bottom: 20px;
+        }
+        
+        .apply-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .apply-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        
+        .apply-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1));
+            border: 1px solid var(--warning);
+            border-left: 4px solid var(--warning);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .warning-box h4 {
+            color: var(--warning);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid var(--success);
+            border-left: 4px solid var(--success);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .tip-box h4 {
+            color: var(--success);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .moderator-hero {
+                padding: 40px 20px;
+            }
+            
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-section {
+                padding: 30px 20px;
+            }
+            
+            .apply-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Кнопка мобильного меню -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Боковая навигация -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                <div class="logo-text">Lumix</div>
+            </div>
+            <div class="sidebar-theme-toggle">
+                <button class="theme-btn" id="themeToggle" title="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Главное меню -->
+        <div class="nav-main">
+            <!-- Правила -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-gavel"></i> Правила</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="rules.html"><i class="fas fa-balance-scale"></i> Политика сервера</a></li>
+                    <li><a href="punishments.html"><i class="fas fa-exclamation-triangle"></i> Система наказаний</a></li>
+                    <li><a href="admin-rules.html"><i class="fas fa-user-shield"></i> Для администрации</a></li>
+                    <li><a href="guide-rules.html"><i class="fas fa-user-graduate"></i> Для проводников</a></li>
+                </ul>
+            </div>
+
+            <!-- Крафты -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-hammer"></i> Крафты</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="crafts.html"><i class="fas fa-tools"></i> Уникальные крафты</a></li>
+                    <li><a href="brewery.html"><i class="fas fa-wine-bottle"></i> Brewery</a></li>
+                </ul>
+            </div>
+            
+            <!-- Игровой процесс -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-gamepad"></i> Игровой процесс</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="behavior.html"><i class="fas fa-palette"></i> Ман-Арты и картины</a></li>
+                    <li><a href="features.html"><i class="fas fa-star"></i> Фишки сервера</a></li>
+                    <li><a href="kingdom.html"><i class="fas fa-crown"></i> Королевство</a></li>
+                </ul>
+            </div>
+            
+            <!-- Команды -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-terminal"></i> Команды</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="commands.html"><i class="fas fa-list"></i> Все команды</a></li>
+                    <li><a href="chat.html"><i class="fas fa-comments"></i> Чат и взаимодействие</a></li>
+                </ul>
+            </div>
+            
+            <!-- Сообщество -->
+            <div class="nav-section active">
+                <div class="nav-section-title active">
+                    <span><i class="fas fa-users"></i> Сообщество</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="history.html"><i class="fas fa-history"></i> История сервера</a></li>
+                    <li><a href="team.html"><i class="fas fa-users-cog"></i> Команда сервера</a></li>
+                    <li><a href="content-creator.html"><i class="fas fa-video"></i> Контент-мейкеры</a></li>
+                    <li><a href="moderator.html" class="active"><i class="fas fa-user-shield"></i> Стать модератором</a></li>
+                </ul>
+            </div>
+            
+            <!-- Магазин и услуги -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-shopping-cart"></i> Магазин</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="shop.html"><i class="fas fa-gem"></i> Донат услуги</a></li>
+                    
+                </ul>
+            </div>
+            
+            <!-- Техническое -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-cogs"></i> Техническое</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="mods.html"><i class="fas fa-plug"></i> Модификации</a></li>
+                    <li><a href="resourcepack.html"><i class="fas fa-paint-brush"></i> РесурсПак</a></li>
+                    
+                </ul>
+            </div>
+            
+            <!-- Дополнительное -->
+            <div class="nav-section">
+                <div class="nav-section-title">
+                    <span><i class="fas fa-plus-circle"></i> Дополнительное</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="nav-subitems">
+                    <li><a href="additional.html"><i class="fas fa-info-circle"></i> Доп. информация</a></li>
+                   
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Быстрые ссылки -->
+        <div class="sidebar-quick-links">
+            <div class="quick-links-title">Быстрые ссылки</div>
+            <div class="quick-links">
+                <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Магазин</span>
+                </a>
+                <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+                    <i class="fas fa-map"></i>
+                    <span>Карта мира</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <!-- Заголовок страницы -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="section-title">Стань модератором</h1>
+                <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 40px;">
+                    Присоединяйтесь к команде модераторов и помогайте развивать сообщество сервера Lumix. 
+                    Станьте частью команды, которая создает лучший игровой опыт для всех участников.
+                </p>
+            </div>
+        </section>
+
+        <!-- Герой секция -->
+        <section class="section">
+            <div class="container">
+                <div class="moderator-hero">
+                    <div class="moderator-badge">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h2 style="color: var(--accent-light); margin-bottom: 20px;">Присоединяйтесь к нашей команде</h2>
+                    <p style="color: var(--text-secondary); font-size: 1.2rem; line-height: 1.6; max-width: 700px; margin: 0 auto;">
+                        Администрация сервера – сердце сообщества. Мы делаем все возможное, чтобы каждый игрок 
+                        чувствовал себя частью дружной команды. От обеспечения стабильной работы сервера до 
+                        организации увлекательных ивентов – наша цель создать для вас мир, в котором приятно 
+                        играть, развиваться и общаться.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Требования -->
+        <section class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">Требования к кандидатам</h2>
+                
+                <div class="requirements-grid">
+                    <div class="requirement-card">
+                        <div class="requirement-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3 style="color: var(--accent-light); margin-bottom: 15px;">Основные требования</h3>
+                        <ul class="requirement-list">
+                            <li>Возраст от 16 лет</li>
+                            <li>Наличие микрофона для общения</li>
+                            <li>От 3 часов активности в день</li>
+                            <li>Знание правил сервера</li>
+                            <li>Ответственность и адекватность</li>
+                            <li>Опыт в модерировании (желательно)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="requirement-card">
+                        <div class="requirement-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 style="color: var(--accent-light); margin-bottom: 15px;">Коммуникационные навыки</h3>
+                        <ul class="requirement-list">
+                            <li>Умение вести конструктивный диалог</li>
+                            <li>Способность разрешать конфликты</li>
+                            <li>Грамотная письменная и устная речь</li>
+                            <li>Терпимость к разным мнениям</li>
+                            <li>Умение работать в команде</li>
+                            <li>Стрессоустойчивость</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="requirement-card">
+                        <div class="requirement-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3 style="color: var(--accent-light); margin-bottom: 15px;">Игровые навыки</h3>
+                        <ul class="requirement-list">
+                            <li>Хорошее знание механик Minecraft</li>
+                            <li>Опыт игры на сервере от 1 месяца</li>
+                            <li>Понимание игрового баланса</li>
+                            <li>Знание особенностей сервера Lumix</li>
+                            <li>Активность в игровом сообществе</li>
+                            <li>Положительная репутация</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Важная информация</h4>
+                    <p style="color: var(--text-secondary);">
+                        Все заявки проверяются вручную администрацией. Мы обращаем внимание не только на формальные 
+                        требования, но и на вашу активность в сообществе, поведение в игре и на Discord. 
+                        Ложная информация в заявке приведет к автоматическому отказу.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Карьерный рост -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Карьерный рост</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Мы ценим развитие наших сотрудников и предоставляем возможности для карьерного роста 
+                    внутри команды модераторов.
+                </p>
+                
+                <div class="career-path">
+                    <div class="career-step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Проводник</div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                            Начальная ступень. Обучение основам модерации, работа с новыми игроками, 
+                            проверка заявок в вайтлист.
+                        </p>
+                    </div>
+                    
+                    <div class="career-step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Модератор</div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                            Полноценная работа с сообществом, решение конфликтов, контроль за соблюдением 
+                            правил, помощь игрокам.
+                        </p>
+                    </div>
+                    
+                    <div class="career-step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Старший модератор</div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                            Руководство командой модераторов, обучение новых сотрудников, решение сложных 
+                            ситуаций, аналитика работы.
+                        </p>
+                    </div>
+                    
+                    <div class="career-step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Администратор</div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                            Высшая ступень. Участие в развитии сервера, техническая поддержка, организация 
+                            ивентов, стратегическое планирование.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <h4><i class="fas fa-lightbulb"></i> Совет по развитию</h4>
+                    <p style="color: var(--text-secondary);">
+                        Проявите инициативу, предлагайте улучшения, активно участвуйте в жизни сообщества. 
+                        Карьерный рост зависит не только от времени работы, но и от вашего вклада в развитие сервера.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Преимущества -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="benefits-section">
+                    <h2 class="section-title">Преимущества работы</h2>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-unlock"></i>
+                            </div>
+                            <h3 style="color: var(--accent-light); margin-bottom: 15px;">Уникальный доступ</h3>
+                            <p style="color: var(--text-secondary);">
+                                Доступ к специальным функциям модерации и инструментам для работы с сообществом.
+                            </p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h3 style="color: var(--accent-light); margin-bottom: 15px;">Привилегии</h3>
+                            <p style="color: var(--text-secondary);">
+                                Специальные привилегии на сервере, уникальные возможности и улучшенный игровой опыт.
+                            </p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 style="color: var(--accent-light); margin-bottom: 15px;">Опыт работы</h3>
+                            <p style="color: var(--text-secondary);">
+                                Ценный опыт работы в команде, развитие лидерских качеств и управленческих навыков.
+                            </p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 style="color: var(--accent-light); margin-bottom: 15px;">Развитие</h3>
+                            <p style="color: var(--text-secondary);">
+                                Возможность профессионального роста и развития в сфере управления сообществами.
+                            </p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3 style="color: var(--accent-light); margin-bottom: 15px;">Уважение</h3>
+                            <p style="color: var(--text-secondary);">
+                                Уважение сообщества, признание вашего вклада в развитие сервера и игрового опыта.
+                            </p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <h3 style="color: var(--accent-light); margin-bottom: 15px;">Бонусы</h3>
+                            <p style="color: var(--text-secondary);">
+                                Регулярные бонусы, поощрения за хорошую работу и участие в специальных программах.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Процесс подачи заявки -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Процесс подачи заявки</h2>
+                
+                <div class="application-process">
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3 style="color: var(--accent-light); margin-bottom: 15px;">Заполнение формы</h3>
+                        <p style="color: var(--text-secondary);">
+                            Заполните подробную анкету, расскажите о себе, своем опыте и почему вы хотите стать модератором.
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 style="color: var(--accent-light); margin-bottom: 15px;">Проверка данных</h3>
+                        <p style="color: var(--text-secondary);">
+                            Администрация проверяет вашу активность, историю поведения и соответствие требованиям.
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 style="color: var(--accent-light); margin-bottom: 15px;">Собеседование</h3>
+                        <p style="color: var(--text-secondary);">
+                            Личное собеседование с текущими администраторами в голосовом чате Discord.
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 style="color: var(--accent-light); margin-bottom: 15px;">Обучение</h3>
+                        <p style="color: var(--text-secondary);">
+                            Прохождение обучения и тестового периода под руководством опытных модераторов.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <h4><i class="fas fa-clock"></i> Время рассмотрения</h4>
+                    <p style="color: var(--text-secondary);">
+                        Заявки рассматриваются в течение 3-5 рабочих дней. В периоды высокой нагрузки срок 
+                        рассмотрения может увеличиться до 7 дней. Пожалуйста, наберитесь терпения.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Подача заявки -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="apply-section">
+                    <h2 style="color: var(--accent-light); margin-bottom: 20px;">Готовы присоединиться?</h2>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Если вы соответствуете требованиям и готовы внести свой вклад в развитие сообщества, 
+                        мы будем рады рассмотреть вашу кандидатуру.
+                    </p>
+                    
+                    <a href="https://discord.com/channels/1407042528334840021/1417942502316707862" class="apply-btn" target="_blank">
+                        Подать заявку на модератора
+                    </a>
+                    
+                    <p style="margin-top: 25px; color: var(--text-muted); font-size: 0.9rem;">
+                        После подачи заявки ожидайте ответа в течение 3-5 рабочих дней
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Футер -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <div class="footer-logo">
+                            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                            Lumix
+                        </div>
+                        <p style="color: var(--text-secondary);">Около-ванильный Minecraft сервер с уникальными механиками и дружелюбным сообществом.</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Навигация</h4>
+                        <div class="footer-links">
+                            <a href="index.html">Главная</a>
+                            <a href="commands.html">Команды</a>
+                            <a href="content-creator.html">Контент-мейкеры</a>
+                            <a href="rules.html">Правила</a>
+                            <a href="shop.html">Магазин</a>
+                            <a href="moderator.html">Стать модератором</a>
+                            <a href="mods.html">Запрещенные моды</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Ссылки</h4>
+                        <div class="footer-links">
+                            <a href="https://discord.gg/WHtWNdej2j">Discord</a>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                            <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
+                            <a href="https://t.me/lumixsmp">Telegram</a>
+                            <a href="http://193.23.199.39:25820/">Карта мира</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 Lumix. Все права защищены.<br>
+                    Сервер не аффилирован с Mojang Studios. Minecraft является товарным знаком Mojang Studios.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+        
+        // Закрытие меню при клике на контент на мобильных устройствах
+        if (window.innerWidth <= 1024) {
+            mainContent.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+        }
+
+        // Аккордеон для боковой панели
+        const navSections = document.querySelectorAll('.nav-section-title');
+        
+        navSections.forEach(section => {
+            section.addEventListener('click', () => {
+                const parent = section.parentElement;
+                // Закрываем все остальные секции
+                document.querySelectorAll('.nav-section').forEach(sec => {
+                    if (sec !== parent) {
+                        sec.classList.remove('active');
+                    }
+                });
+                // Открываем/закрываем текущую
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Переключение темы
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+
+        // Применяем сохраненную тему
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+
+        // Автоматически открываем активный раздел при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeLinks = document.querySelectorAll('.nav-subitems a.active');
+            activeLinks.forEach(link => {
+                const parentSection = link.closest('.nav-section');
+                if (parentSection) {
+                    parentSection.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <!-- Уведомление о копировании -->
+    <div class="copy-notification" id="copyNotification">
+        IP адрес скопирован!
+    </div>
+</body>
+</html>

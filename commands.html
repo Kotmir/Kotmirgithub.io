@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Команды - Lumix Minecraft сервер</title>
+    
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    
+    <!-- Open Graph разметка -->
+    <meta property="og:title" content="Команды - Lumix Minecraft сервер">
+    <meta property="og:description" content="Список всех команд на сервере Lumix">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://kotmir.github.io/Kotmirgithub.io/commands.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumix">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Команды - Lumix Minecraft сервер">
+    <meta name="twitter:description" content="Список всех команд на сервере Lumix">
+    <meta name="twitter:image" content="img/logo.jpg">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="Полный список команд на сервере Lumix - начальные команды, скины, чат и донат-команды">
+    <meta name="keywords" content="minecraft, команды, lumix, сервер, майнкрафт, донат">
+    
+    <!-- Стили и шрифты -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: #888888;
+            --accent: #c95f5b;
+            --accent-hover: #e546bd;
+            --accent-light: #818cf8;
+            --border: #2a2a2a;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #2d1a2d, #1a2d2d, #0a0a0a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Эффект частиц */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(201, 95, 91, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 60%, rgba(129, 140, 248, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 80%, rgba(201, 95, 91, 0.05) 0%, transparent 20%);
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+/* Улучшенная боковая навигация */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(17, 17, 17, 0.98), rgba(26, 26, 26, 0.95));
+    border-right: 1px solid var(--border);
+    padding: 0;
+    overflow-y: auto;
+    z-index: 1000;
+    backdrop-filter: blur(20px);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 25px 20px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10, 10, 10, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.logo-text {
+    font-size: 26px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.sidebar-theme-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.theme-btn {
+    background: rgba(42, 42, 42, 0.6);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.theme-btn:hover {
+    background: var(--accent);
+    color: white;
+    transform: rotate(15deg);
+}
+
+.nav-main {
+    flex: 1;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.nav-section {
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.nav-section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 25px;
+    color: var(--accent-light);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-section-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(129, 140, 248, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.nav-section-title:hover::before {
+    left: 100%;
+}
+
+.nav-section-title:hover {
+    background: rgba(42, 42, 42, 0.3);
+    border-left: 4px solid var(--accent);
+    padding-left: 30px;
+}
+
+.nav-section-title.active {
+    background: rgba(42, 42, 42, 0.5);
+    border-left: 4px solid var(--accent);
+    padding-left: 30px;
+}
+
+.nav-section-title i:last-child {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    color: var(--text-muted);
+}
+
+.nav-section.active .nav-section-title i:last-child {
+    transform: rotate(180deg);
+}
+
+.nav-subitems {
+    list-style: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: rgba(10, 10, 10, 0.4);
+    border-left: 4px solid var(--accent);
+}
+
+.nav-section.active .nav-subitems {
+    max-height: 500px;
+}
+
+.nav-subitems li {
+    margin-bottom: 0;
+    position: relative;
+}
+
+.nav-subitems a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 12px 25px 12px 45px;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 0.92rem;
+    border-left: 2px solid transparent;
+}
+
+.nav-subitems a:hover {
+    background: rgba(42, 42, 42, 0.3);
+    color: var(--accent-light);
+    padding-left: 50px;
+    border-left: 2px solid var(--accent-light);
+}
+
+.nav-subitems a.active {
+    color: var(--accent-light);
+    background: rgba(42, 42, 42, 0.6);
+    border-left: 2px solid var(--accent);
+}
+
+.nav-subitems a.active::before {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.nav-subitems a i:first-child {
+    width: 18px;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Быстрые ссылки */
+.sidebar-quick-links {
+    padding: 20px;
+    border-top: 1px solid var(--border);
+    background: rgba(10, 10, 10, 0.6);
+    margin-top: auto;
+}
+
+.quick-links-title {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.quick-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 8px;
+    background: rgba(42, 42, 42, 0.4);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.quick-link:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.quick-link i {
+    font-size: 1.2rem;
+}
+
+/* Анимации */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.nav-subitems li {
+    animation: slideIn 0.3s ease forwards;
+    opacity: 0;
+}
+
+.nav-subitems li:nth-child(1) { animation-delay: 0.1s; }
+.nav-subitems li:nth-child(2) { animation-delay: 0.15s; }
+.nav-subitems li:nth-child(3) { animation-delay: 0.2s; }
+.nav-subitems li:nth-child(4) { animation-delay: 0.25s; }
+.nav-subitems li:nth-child(5) { animation-delay: 0.3s; }
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+    }
+    
+    .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Стили для темы */
+body.light-theme {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-card: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+}
+
+.theme-btn .fa-sun {
+    display: none;
+}
+
+body.light-theme .theme-btn .fa-moon {
+    display: none;
+}
+
+body.light-theme .theme-btn .fa-sun {
+    display: block;
+}
+
+        /* Основной контент */
+        .main-content {
+            margin-left: 280px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Секции */
+        .section {
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-dark {
+            background: rgba(17, 17, 17, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 2px;
+        }
+
+        /* Команды */
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .command-category {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .command-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .command-category h3 {
+            color: var(--accent-light);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .command-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: rgba(42, 42, 42, 0.4);
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .command-syntax {
+            font-family: monospace;
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .command-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .donat-commands {
+            background: linear-gradient(135deg, rgba(201, 95, 91, 0.1), rgba(129, 140, 248, 0.1));
+            border: 1px solid var(--accent);
+        }
+
+        .donat-commands h3 {
+            color: var(--accent);
+        }
+
+        /* Кнопка мобильного меню */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(42, 42, 42, 0.7));
+            padding: 50px 0 30px;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-copyright {
+            text-align: center;
+            color: var(--text-muted);
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 10px;
+            }
+            
+            .commands-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .command-category {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Кнопка мобильного меню -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+   <!-- Кнопка мобильного меню -->
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Боковая навигация -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">
+            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+            <div class="logo-text">Lumix</div>
+        </div>
+        <div class="sidebar-theme-toggle">
+            <button class="theme-btn" id="themeToggle" title="Сменить тему">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Главное меню -->
+    <div class="nav-main">
+        <!-- Правила -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gavel"></i> Правила</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="rules.html"><i class="fas fa-balance-scale"></i> Политика сервера</a></li>
+                <li><a href="punishments.html"><i class="fas fa-exclamation-triangle"></i> Система наказаний</a></li>
+                <li><a href="admin-rules.html"><i class="fas fa-user-shield"></i> Для администрации</a></li>
+                <li><a href="guide-rules.html"><i class="fas fa-user-graduate"></i> Для проводников</a></li>
+            </ul>
+        </div>
+
+        <!-- Крафты -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-hammer"></i> Крафты</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="crafts.html"><i class="fas fa-tools"></i> Уникальные крафты</a></li>
+                <li><a href="brewery.html"><i class="fas fa-wine-bottle"></i> Brewery</a></li>
+            </ul>
+        </div>
+        
+        <!-- Игровой процесс -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gamepad"></i> Игровой процесс</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="behavior.html"><i class="fas fa-palette"></i> Ман-Арты и картины</a></li>
+                <li><a href="features.html"><i class="fas fa-star"></i> Фишки сервера</a></li>
+                <li><a href="kingdom.html"><i class="fas fa-crown"></i> Королевство</a></li>
+            </ul>
+        </div>
+        
+        <!-- Команды -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-terminal"></i> Команды</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="commands.html"><i class="fas fa-list"></i> Все команды</a></li>
+                <li><a href="chat.html"><i class="fas fa-comments"></i> Чат и взаимодействие</a></li>
+            </ul>
+        </div>
+        
+        <!-- Сообщество -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-users"></i> Сообщество</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="history.html"><i class="fas fa-history"></i> История сервера</a></li>
+                <li><a href="team.html"><i class="fas fa-users-cog"></i> Команда сервера</a></li>
+                <li><a href="content-creator.html"><i class="fas fa-video"></i> Контент-мейкеры</a></li>
+                <li><a href="moderator.html"><i class="fas fa-user-shield"></i> Стать модератором</a></li>
+            </ul>
+        </div>
+        
+        <!-- Магазин и услуги -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-shopping-cart"></i> Магазин</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="shop.html"><i class="fas fa-gem"></i> Донат услуги</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Техническое -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-cogs"></i> Техническое</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="mods.html"><i class="fas fa-plug"></i> Модификации</a></li>
+                <li><a href="resourcepack.html"><i class="fas fa-paint-brush"></i> РесурсПак</a></li>
+               
+            </ul>
+        </div>
+        
+        <!-- Дополнительное -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-plus-circle"></i> Дополнительное</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="additional.html"><i class="fas fa-info-circle"></i> Доп. информация</a></li>
+               
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Быстрые ссылки -->
+    <div class="sidebar-quick-links">
+        <div class="quick-links-title">Быстрые ссылки</div>
+        <div class="quick-links">
+            <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+            </a>
+            <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Магазин</span>
+            </a>
+            <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+                <i class="fas fa-map"></i>
+                <span>Карта мира</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <!-- Заголовок страницы -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="section-title">Команды сервера</h1>
+                <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 40px;">
+                    Полный список всех команд, доступных на сервере Lumix. Здесь вы найдете как основные команды для игры, так и специальные донат-команды.
+                </p>
+            </div>
+        </section>
+
+        <!-- Команды и чат -->
+        <section class="section">
+            <div class="container">
+                <div class="commands-grid">
+                    <!-- Начальные команды -->
+                    <div class="command-category">
+                        <h3><i class="fas fa-play-circle"></i> Начальные и важные команды</h3>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/register (Пароль) (Повтор Пароля)</div>
+                            <div class="command-desc">Зарегистрироваться на сервере.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/login (Пароль)</div>
+                            <div class="command-desc">Войти на сервер.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/report сообщение с проблемой</div>
+                            <div class="command-desc">Написать о проблеме сразу напрямую активной модерации.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/2fa</div>
+                            <div class="command-desc">Подключить двухфакторную аутентификацию.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/changepassword (Старый пароль) (Новый пароль)</div>
+                            <div class="command-desc">Сменить пароль.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/help & /navigation</div>
+                            <div class="command-desc">Открыть меню навигации по проекту.</div>
+                        </div>
+                    </div>
+
+                    <!-- Скины -->
+                    <div class="command-category">
+                        <h3><i class="fas fa-user-circle"></i> Скины</h3>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/skin set (Никнейм Игрока)</div>
+                            <div class="command-desc">Поставить скин по нику какого-либо лицензионного аккаунта.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/skin url "(Ссылка на Картинку)"</div>
+                            <div class="command-desc">Поставить скин по ссылке на картинку.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/skin clear</div>
+                            <div class="command-desc">Очистить свой скин.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/skin random</div>
+                            <div class="command-desc">Поставить себе случайный скин.</div>
+                        </div>
+                    </div>
+
+                    <!-- Чат и взаимодействие -->
+                    <div class="command-category">
+                        <h3><i class="fas fa-comments"></i> Чат и взаимодействие</h3>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">сообщение</div>
+                            <div class="command-desc">Написать сообщение в локальный чат.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">!сообщение</div>
+                            <div class="command-desc">Написать сообщение в глобальный чат.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/me сообщение</div>
+                            <div class="command-desc">Написать сообщение от третьего лица.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/msg (Никнейм Игрока) сообщение</div>
+                            <div class="command-desc">Написать игроку в личные сообщения.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/r сообщение</div>
+                            <div class="command-desc">Быстро ответить последнему игроку.</div>
+                        </div>
+                    </div>
+
+                    <!-- Донат-команды -->
+                    <div class="command-category donat-commands">
+                        <h3><i class="fas fa-crown"></i> Донат-команды</h3>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/hat</div>
+                            <div class="command-desc">Надеть предмет на голову.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/spin</div>
+                            <div class="command-desc">Начать крутиться на месте.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/co i</div>
+                            <div class="command-desc">Включить режим инспектора.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/near</div>
+                            <div class="command-desc">Посмотреть, кто есть в радиусе 100 блоков.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/co near</div>
+                            <div class="command-desc">Посмотреть информацию о взаимодействиях в радиусе 5 блоков.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/iname</div>
+                            <div class="command-desc">Переименование предметов.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/ilore</div>
+                            <div class="command-desc">Изменение описаний.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/anvil</div>
+                            <div class="command-desc">Виртуальная наковальня.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/map hide & /map show</div>
+                            <div class="command-desc">Скрытие с онлайн-карты и возвращение обратно.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">/scale 0.65 - 1.0</div>
+                            <div class="command-desc">Изменение размера персонажа.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Примечание о донат-командах -->
+                <div style="background: linear-gradient(135deg, rgba(201, 95, 91, 0.1), rgba(129, 140, 248, 0.1)); padding: 25px; border-radius: 10px; border: 1px solid var(--accent); margin-top: 40px; backdrop-filter: blur(10px);">
+                    <h3 style="color: var(--accent); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-info-circle"></i> Примечание о донат-командах
+                    </h3>
+                    <p style="color: var(--text-secondary);">
+                        Донат-команды доступны игрокам, приобретшим соответствующие привилегии на сервере. 
+                        Подробнее о доступных привилегиях вы можете узнать в разделе <a href="shop.html" style="color: var(--accent-light);">Магазин</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Футер -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <div class="footer-logo">
+                            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                            Lumix
+                        </div>
+                        <p style="color: var(--text-secondary);">Около-ванильный Minecraft сервер с уникальными механиками и дружелюбным сообществом.</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Навигация</h4>
+                        <div class="footer-links">
+                            <a href="index.html">Главная</a>
+                            <a href="commands.html">Команды</a>
+                            <a href="content-creator.html">Контент-мейкеры</a>
+                            <a href="rules.html">Правила</a>
+                            <a href="shop.html">Магазин</a>
+                            <a href="moderator.html">Стать модератором</a>
+                            <a href="mods.html">Запрещенные моды</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Ссылки</h4>
+                        <div class="footer-links">
+                            <a href="https://discord.gg/WHtWNdej2j">Discord</a>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                            <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
+                            <a href="https://t.me/lumixsmp">Telegram</a>
+                            <a href="http://193.23.199.39:25820/">Карта мира</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 Lumix. Все права защищены.<br>
+                    Сервер не аффилирован с Mojang Studios. Minecraft является товарным знаком Mojang Studios.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+      // Мобильное меню
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+
+mobileMenuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+// Закрытие меню при клике на контент на мобильных устройствах
+if (window.innerWidth <= 1024) {
+    mainContent.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+}
+
+// Аккордеон для боковой панели
+const navSections = document.querySelectorAll('.nav-section-title');
+
+navSections.forEach(section => {
+    section.addEventListener('click', () => {
+        const parent = section.parentElement;
+        // Закрываем все остальные секции
+        document.querySelectorAll('.nav-section').forEach(sec => {
+            if (sec !== parent) {
+                sec.classList.remove('active');
+            }
+        });
+        // Открываем/закрываем текущую
+        parent.classList.toggle('active');
+    });
+});
+
+// Подсветка активной страницы
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const navLinks = document.querySelectorAll('.nav-subitems a');
+
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+        // Автоматически открываем родительскую секцию
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    }
+});
+
+// Переключение темы
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Применяем сохраненную тему
+if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    
+    const isLight = document.body.classList.contains('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Автоматически открываем активный раздел при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const activeLinks = document.querySelectorAll('.nav-subitems a.active');
+    activeLinks.forEach(link => {
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    });
+});
+    </script>
+</body>
+</html>

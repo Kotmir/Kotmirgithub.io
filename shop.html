@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин - Lumix Minecraft сервер</title>
+    
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    
+    <!-- Open Graph разметка -->
+    <meta property="og:title" content="Магазин - Lumix Minecraft сервер">
+    <meta property="og:description" content="Донат-услуги и привилегии на сервере Lumix">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://kotmir.github.io/Kotmirgithub.io/shop.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumix">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Магазин - Lumix Minecraft сервер">
+    <meta name="twitter:description" content="Донат-услуги и привилегии на сервере Lumix">
+    <meta name="twitter:image" content="img/logo.jpg">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="Донат-услуги и привилегии на сервере Lumix - Wave, Tide, Abyss и дополнительные услуги">
+    <meta name="keywords" content="minecraft, магазин, lumix, сервер, майнкрафт, донат, привилегии">
+    
+    <!-- Стили и шрифты -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Уникальные стили для страницы магазина */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .product-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-header {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .product-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .product-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .product-features {
+            padding: 25px;
+            flex-grow: 1;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            color: var(--success);
+            position: absolute;
+            left: 0;
+        }
+        
+        .product-footer {
+            padding: 20px 25px;
+            background: rgba(42, 42, 42, 0.6);
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .buy-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-name {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        .price-tag {
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+  <!-- Кнопка мобильного меню -->
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Боковая навигация -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">
+            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+            <div class="logo-text">Lumix</div>
+        </div>
+        <div class="sidebar-theme-toggle">
+            <button class="theme-btn" id="themeToggle" title="Сменить тему">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Главное меню -->
+    <div class="nav-main">
+        <!-- Правила -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gavel"></i> Правила</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="rules.html"><i class="fas fa-balance-scale"></i> Политика сервера</a></li>
+                <li><a href="punishments.html"><i class="fas fa-exclamation-triangle"></i> Система наказаний</a></li>
+                <li><a href="admin-rules.html"><i class="fas fa-user-shield"></i> Для администрации</a></li>
+                <li><a href="guide-rules.html"><i class="fas fa-user-graduate"></i> Для проводников</a></li>
+            </ul>
+        </div>
+
+        <!-- Крафты -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-hammer"></i> Крафты</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="crafts.html"><i class="fas fa-tools"></i> Уникальные крафты</a></li>
+                <li><a href="brewery.html"><i class="fas fa-wine-bottle"></i> Brewery</a></li>
+            </ul>
+        </div>
+        
+        <!-- Игровой процесс -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gamepad"></i> Игровой процесс</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="behavior.html"><i class="fas fa-palette"></i> Ман-Арты и картины</a></li>
+                <li><a href="features.html"><i class="fas fa-star"></i> Фишки сервера</a></li>
+                <li><a href="kingdom.html"><i class="fas fa-crown"></i> Королевство</a></li>
+            </ul>
+        </div>
+        
+        <!-- Команды -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-terminal"></i> Команды</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="commands.html"><i class="fas fa-list"></i> Все команды</a></li>
+                <li><a href="chat.html"><i class="fas fa-comments"></i> Чат и взаимодействие</a></li>
+            </ul>
+        </div>
+        
+        <!-- Сообщество -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-users"></i> Сообщество</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="history.html"><i class="fas fa-history"></i> История сервера</a></li>
+                <li><a href="team.html"><i class="fas fa-users-cog"></i> Команда сервера</a></li>
+                <li><a href="content-creator.html"><i class="fas fa-video"></i> Контент-мейкеры</a></li>
+                <li><a href="moderator.html"><i class="fas fa-user-shield"></i> Стать модератором</a></li>
+            </ul>
+        </div>
+        
+        <!-- Магазин и услуги -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-shopping-cart"></i> Магазин</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="shop.html"><i class="fas fa-gem"></i> Донат услуги</a></li>
+               
+            </ul>
+        </div>
+        
+        <!-- Техническое -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-cogs"></i> Техническое</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="mods.html"><i class="fas fa-plug"></i> Модификации</a></li>
+                <li><a href="resourcepack.html"><i class="fas fa-paint-brush"></i> РесурсПак</a></li>
+               
+            </ul>
+        </div>
+        
+        <!-- Дополнительное -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-plus-circle"></i> Дополнительное</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="additional.html"><i class="fas fa-info-circle"></i> Доп. информация</a></li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Быстрые ссылки -->
+    <div class="sidebar-quick-links">
+        <div class="quick-links-title">Быстрые ссылки</div>
+        <div class="quick-links">
+            <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+            </a>
+            <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Магазин</span>
+            </a>
+            <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+                <i class="fas fa-map"></i>
+                <span>Карта мира</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <!-- Заголовок страницы -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="section-title">Магазин привилегий</h1>
+                <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 40px;">
+                    Поддержите развитие сервера и получите эксклюзивные возможности! Все средства идут на улучшение сервера и его содержания.
+                </p>
+            </div>
+        </section>
+
+        <!-- Основные привилегии -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Основные привилегии</h2>
+                
+                <div class="products-grid">
+                    <!-- Lumix Wave -->
+                    <div class="product-card">
+                        <div class="product-header">
+                            <div class="product-name">Lumix Wave</div>
+                            <div class="product-description">Начальный уровень</div>
+                        </div>
+                        <div class="product-features">
+                            <p style="color: var(--text-secondary); margin-bottom: 20px;">Лёгкий старт с полезными фишками</p>
+                            <ul class="feature-list">
+                                <li>/iname — переименование предметов</li>
+                                <li>/ilore — изменение описаний</li>
+                                <li>/hat — блок на голову</li>
+                                <li>/anvil — виртуальная наковальня</li>
+                                <li>Базовая косметика</li>
+                                <li>Префикс Wave</li>
+                                <li>Роль @Wave</li>
+                                <li>Размер: /scale 0.9 — 1.0</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <div class="price-tag">299 руб.</div>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate" class="buy-btn" style="margin-top: 15px;">Купить на Boosty</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Lumix Tide -->
+                    <div class="product-card">
+                        <div class="product-header">
+                            <div class="product-name">Lumix Tide</div>
+                            <div class="product-description">Продвинутый уровень</div>
+                        </div>
+                        <div class="product-features">
+                            <p style="color: var(--text-secondary); margin-bottom: 20px;">Стань волной, которую не остановить</p>
+                            <p style="margin-bottom: 15px; color: var(--accent);">Всё из Wave, плюс:</p>
+                            <ul class="feature-list">
+                                <li>/spin — вращение вокруг своей оси</li>
+                                <li>Расширенная косметика</li>
+                                <li>Размер: /scale 0.75 — 1.0</li>
+                                <li>Скрытие с карты: /map hide — исчезни с онлайн-карты, /map show — вернись обратно</li>
+                                <li>Участие в ЗБТ</li>
+                                <li>Улучшенный префикс Tide</li>
+                                <li>Роль @Tide</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <div class="price-tag">599 руб.</div>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate" class="buy-btn" style="margin-top: 15px;">Купить на Boosty</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Lumix Abyss -->
+                    <div class="product-card">
+                        <div class="product-header">
+                            <div class="product-name">Lumix Abyss</div>
+                            <div class="product-description">Премиум уровень</div>
+                        </div>
+                        <div class="product-features">
+                            <p style="color: var(--text-secondary); margin-bottom: 20px;">Невидим. Неуловим. Несравним.</p>
+                            <p style="margin-bottom: 15px; color: var(--accent);">Всё из Wave и Tide, плюс:</p>
+                            <ul class="feature-list">
+                                <li>Размер: /scale 0.65 — 1.0</li>
+                                <li>Полный доступ к эксклюзивной косметике</li>
+                                <li>Частицы, эффекты, анимации</li>
+                                <li>Полное исчезновение с карты — невидим даже при поиске: /map hide / /map show</li>
+                                <li>Уникальный префикс Abyss с анимацией или свечением</li>
+                                <li>Приоритетный доступ ко всем тестам</li>
+                                <li>Роль @Abyss</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <div class="price-tag">999 руб.</div>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate" class="buy-btn" style="margin-top: 15px;">Купить на Boosty</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Дополнительные услуги -->
+        <section class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">Дополнительные услуги</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px;">
+                    Не входят в донат-привилегии. Покупаются отдельно при необходимости.
+                </p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-name">Смена аккаунта</div>
+                        <p>Перенос всех купленных донатов и статуса на новый аккаунт. Услуга одноразовая и выполняется вручную.</p>
+                        <div class="price-tag">Уточняйте у администрации</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-name">Помилование</div>
+                        <p>Разблокировка забаненного аккаунта (если возможно по правилам). Не действует, если бан был выдан за серьёзное нарушение.</p>
+                        <div class="price-tag">Уточняйте у администрации</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-name">Твинк для ферм</div>
+                        <p>Дополнительный аккаунт только для ферм. Предназначен для автоматических ферм и сбора ресурсов.</p>
+                        <div class="price-tag">Уточняйте у администрации</div>
+                    </div>
+                </div>
+                
+                <!-- Примечание -->
+                <div style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); padding: 25px; border-radius: 10px; border: 1px solid var(--border); margin-top: 40px; backdrop-filter: blur(10px);">
+                    <h3 style="color: var(--accent-light); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-info-circle"></i> Важная информация
+                    </h3>
+                    <ul style="color: var(--text-secondary); padding-left: 20px;">
+                        <li>Все покупки являются добровольным взносом на развитие сервера</li>
+                        <li>Возврат средств не предусмотрен</li>
+                        <li>Привилегии действуют бессрочно</li>
+                        <li>При смене владельца сервера привилегии сохраняются</li>
+                        <li>Администрация оставляет за собой право изменять условия</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Как купить -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Как приобрести</h2>
+                
+                <div class="steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Выберите привилегию</h3>
+                        <p>Ознакомьтесь с доступными привилегиями и выберите подходящую для вас.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Перейдите на Boosty</h3>
+                        <p>Нажмите кнопку "Купить на Boosty" под выбранной привилегией.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Оформите подписку</h3>
+                        <p>Выберите подходящий тариф и завершите оплату на платформе Boosty.</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="https://boosty.to/multicraft-mtcraft/donate" class="buy-btn" style="padding: 15px 40px; font-size: 1.1rem;">
+                        <i class="fas fa-shopping-cart"></i> Перейти в магазин Boosty
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Футер -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <div class="footer-logo">
+                            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                            Lumix
+                        </div>
+                        <p style="color: var(--text-secondary);">Около-ванильный Minecraft сервер с уникальными механиками и дружелюбным сообществом.</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Навигация</h4>
+                        <div class="footer-links">
+                            <a href="index.html">Главная</a>
+                            <a href="commands.html">Команды</a>
+                            <a href="content-creator.html">Контент-мейкеры</a>
+                            <a href="rules.html">Правила</a>
+                            <a href="shop.html">Магазин</a>
+                            <a href="moderator.html">Стать модератором</a>
+                            <a href="mods.html">Запрещенные моды</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Ссылки</h4>
+                        <div class="footer-links">
+                            <a href="https://discord.gg/WHtWNdej2j">Discord</a>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                            <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
+                            <a href="https://t.me/lumixsmp">Telegram</a>
+                            <a href="http://193.23.199.39:25820/">Карта мира</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 Lumix. Все права защищены.<br>
+                    Сервер не аффилирован с Mojang Studios. Minecraft является товарным знаком Mojang Studios.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+      // Мобильное меню
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+
+mobileMenuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+// Закрытие меню при клике на контент на мобильных устройствах
+if (window.innerWidth <= 1024) {
+    mainContent.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+}
+
+// Аккордеон для боковой панели
+const navSections = document.querySelectorAll('.nav-section-title');
+
+navSections.forEach(section => {
+    section.addEventListener('click', () => {
+        const parent = section.parentElement;
+        // Закрываем все остальные секции
+        document.querySelectorAll('.nav-section').forEach(sec => {
+            if (sec !== parent) {
+                sec.classList.remove('active');
+            }
+        });
+        // Открываем/закрываем текущую
+        parent.classList.toggle('active');
+    });
+});
+
+// Подсветка активной страницы
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const navLinks = document.querySelectorAll('.nav-subitems a');
+
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+        // Автоматически открываем родительскую секцию
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    }
+});
+
+// Переключение темы
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Применяем сохраненную тему
+if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    
+    const isLight = document.body.classList.contains('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Автоматически открываем активный раздел при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const activeLinks = document.querySelectorAll('.nav-subitems a.active');
+    activeLinks.forEach(link => {
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    });
+});
+    </script>
+</body>
+</html>

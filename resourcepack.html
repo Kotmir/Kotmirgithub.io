@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumix - Ресурспак</title>
+
+    
+
+
+<style>
+
+
+/* Стили для улучшенного FAQ */
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.faq-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    cursor: pointer;
+    gap: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background: rgba(42, 42, 42, 0.3);
+}
+
+.faq-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.faq-text {
+    flex: 1;
+}
+
+.faq-text h3 {
+    color: var(--accent-light);
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.faq-text p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.faq-arrow {
+    color: var(--text-muted);
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-arrow {
+    transform: rotate(180deg);
+    color: var(--accent);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: rgba(10, 10, 10, 0.4);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+.faq-answer-content {
+    padding: 0 25px 25px 95px;
+}
+
+.faq-answer p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.faq-answer ul {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.faq-answer li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.faq-answer li::before {
+    content: "•";
+    color: var(--accent);
+    font-weight: bold;
+    position: absolute;
+    left: -15px;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.faq-item.active .faq-answer-content {
+    animation: fadeInUp 0.4s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .faq-question {
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .faq-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .faq-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .faq-answer-content {
+        padding: 0 20px 20px 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-question {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .faq-answer-content {
+        padding: 0 20px 20px 20px;
+    }
+    
+    .faq-text {
+        text-align: center;
+    }
+}
+
+/* Стили для улучшенной Discord ссылки */
+.discord-link-enhanced {
+    display: block;
+    background: linear-gradient(135deg, #5865F2, #4752c4);
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(88, 101, 242, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.discord-link-enhanced:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(88, 101, 242, 0.4);
+    background: linear-gradient(135deg, #5865F2, #5b6bf2);
+}
+
+.discord-link-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.discord-icon {
+    font-size: 2rem;
+    background: white;
+    color: #5865F2;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.discord-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.discord-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.discord-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.discord-arrow {
+    font-size: 1rem;
+    opacity: 0.8;
+    transition: transform 0.3s ease;
+}
+
+.discord-link-enhanced:hover .discord-arrow {
+    transform: translateX(3px);
+}
+
+/* Анимация свечения */
+.discord-link-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.discord-link-enhanced:hover::before {
+    left: 100%;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .discord-link-content {
+        gap: 12px;
+    }
+    
+    .discord-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+    }
+    
+    .discord-title {
+        font-size: 1rem;
+    }
+    
+    .discord-subtitle {
+        font-size: 0.85rem;
+    }
+}
+</style>
+    
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    
+    <!-- Open Graph разметка -->
+    <meta property="og:title" content="Lumix - Ресурспак">
+    <meta property="og:description" content="Кастомный ресурспак сервера Lumix с уникальными текстурами и особенностями">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://kotmir.github.io/Kotmirgithub.io/resourcepack.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumix">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="Кастомный ресурспак сервера Lumix с уникальными текстурами и особенностями">
+    <meta name="keywords" content="minecraft, ресурспак, lumix, текстуры, кастомные текстуры">
+    
+    <!-- Стили -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <!-- Кнопка мобильного меню -->
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Боковая навигация -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">
+            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+            <div class="logo-text">Lumix</div>
+        </div>
+        <div class="sidebar-theme-toggle">
+            <button class="theme-btn" id="themeToggle" title="Сменить тему">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Главное меню -->
+    <div class="nav-main">
+        <!-- Правила -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gavel"></i> Правила</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="rules.html"><i class="fas fa-balance-scale"></i> Политика сервера</a></li>
+                <li><a href="punishments.html"><i class="fas fa-exclamation-triangle"></i> Система наказаний</a></li>
+                <li><a href="admin-rules.html"><i class="fas fa-user-shield"></i> Для администрации</a></li>
+                <li><a href="guide-rules.html"><i class="fas fa-user-graduate"></i> Для проводников</a></li>
+            </ul>
+        </div>
+
+        <!-- Крафты -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-hammer"></i> Крафты</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="crafts.html"><i class="fas fa-tools"></i> Уникальные крафты</a></li>
+                <li><a href="brewery.html"><i class="fas fa-wine-bottle"></i> Brewery</a></li>
+            </ul>
+        </div>
+        
+        <!-- Игровой процесс -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gamepad"></i> Игровой процесс</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="behavior.html"><i class="fas fa-palette"></i> Ман-Арты и картины</a></li>
+                <li><a href="features.html"><i class="fas fa-star"></i> Фишки сервера</a></li>
+                <li><a href="kingdom.html"><i class="fas fa-crown"></i> Королевство</a></li>
+            </ul>
+        </div>
+        
+        <!-- Команды -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-terminal"></i> Команды</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="commands.html"><i class="fas fa-list"></i> Все команды</a></li>
+                <li><a href="chat.html"><i class="fas fa-comments"></i> Чат и взаимодействие</a></li>
+            </ul>
+        </div>
+        
+        <!-- Сообщество -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-users"></i> Сообщество</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="history.html"><i class="fas fa-history"></i> История сервера</a></li>
+                <li><a href="team.html"><i class="fas fa-users-cog"></i> Команда сервера</a></li>
+                <li><a href="content-creator.html"><i class="fas fa-video"></i> Контент-мейкеры</a></li>
+                <li><a href="moderator.html"><i class="fas fa-user-shield"></i> Стать модератором</a></li>
+            </ul>
+        </div>
+        
+        <!-- Магазин и услуги -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-shopping-cart"></i> Магазин</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="shop.html"><i class="fas fa-gem"></i> Донат услуги</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Техническое -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-cogs"></i> Техническое</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="mods.html"><i class="fas fa-plug"></i> Модификации</a></li>
+                <li><a href="resourcepack.html"><i class="fas fa-paint-brush"></i> РесурсПак</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Дополнительное -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-plus-circle"></i> Дополнительное</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="additional.html"><i class="fas fa-info-circle"></i> Доп. информация</a></li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Быстрые ссылки -->
+    <div class="sidebar-quick-links">
+        <div class="quick-links-title">Быстрые ссылки</div>
+        <div class="quick-links">
+            <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+            </a>
+            <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Магазин</span>
+            </a>
+            <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+                <i class="fas fa-map"></i>
+                <span>Карта мира</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Основной контент -->
+    <div class="main-content">
+        <!-- Герой секция -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Ресурспак Lumix</h1>
+                        <p>Уникальный кастомный ресурспак, созданный специально для нашего сервера. Улучшает визуальную составляющую игры, добавляет новые текстуры и делает геймплей более атмосферным.</p>
+                        
+                        <div class="ip-section">
+                            <div class="ip-label">Скачать ресурспак:</div>
+                            <a href="#" class="server-ip" id="resourcepackDownload">
+                                <i class="fas fa-download"></i> Lumix_Resourcepack_v1.2.zip
+                            </a>
+                            <div>Размер: 45.7 МБ | Версия: 1.21.4+</div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="img/logo.jpg" alt="Превью ресурспака">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Основная информация -->
+        <section class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">Особенности ресурспака</h2>
+                
+                <div class="steps">
+                    <div class="step-card">
+                        <div class="step-number"><i class="fas fa-palette"></i></div>
+                        <h3>Уникальные текстуры</h3>
+                        <p>Полностью переработанные текстуры блоков, предметов и мобов, создающие уникальную атмосферу сервера Lumix.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number"><i class="fas fa-gem"></i></div>
+                        <h3>Кастомные предметы</h3>
+                        <p>Специальные текстуры для уникальных предметов и крафтов, доступных только на нашем сервере.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number"><i class="fas fa-eye"></i></div>
+                        <h3>Оптимизированная графика</h3>
+                        <p>Ресурспак оптимизирован для работы на различных конфигурациях ПК без потери качества.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Инструкция по установке -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Инструкция по установке</h2>
+                
+                <div class="steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Скачайте ресурспак</h3>
+                        <p>Нажмите на кнопку скачивания выше, чтобы загрузить архив с ресурспаком на ваш компьютер.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Перенесите папку с ресурспаком</h3>
+                        <p>Перенесите папку с ресурспаком в папку resourcepack</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Установите в игре</h3>
+                        <p>В настройках Minecraft перейдите в раздел "Ресурспаки", нажмите "Открыть папку с ресурспаками" и переместите туда папку с ресурспаком.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3>Активируйте ресурспак</h3>
+                        <p>Вернитесь в игру, выберите ресурспак Lumix из списка доступных и переместите его в правую колонку для активации.</p>
+                    </div>
+                </div>
+                
+               
+    <!-- Улучшенная Discord карточка -->
+    <div class="discord-help-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(42, 42, 42, 0.6)); border-radius: 20px; padding: 40px; margin: 25px auto; max-width: 100%; text-align: center; border: 2px solid #5865F2; position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+        <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: linear-gradient(135deg, #5865F2, #4752c4); border-radius: 50%; opacity: 0.1;"></div>
+        <div style="position: absolute; bottom: -25px; left: -25px; width: 80px; height: 80px; background: linear-gradient(135deg, #4752c4, #5865F2); border-radius: 50%; opacity: 0.1;"></div>
+        
+        <div class="discord-icon-wrapper" style="width: 70px; height: 70px; background: linear-gradient(135deg, #5865F2, #4752c4); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white; box-shadow: 0 8px 25px rgba(88, 101, 242, 0.3);">
+            <i class="fab fa-discord"></i>
+        </div>
+        
+        <h4 style="color: #5865F2; font-size: 1.5rem; margin-bottom: 12px; font-weight: 700;">Discord сервер Lumix</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 25px; line-height: 1.5;">
+            Присоединяйтесь к нашему Discord сообществу для получения помощи, 
+            сообщения о багах и общения с другими игроками
+        </p>
+        
+        <a href="https://discord.gg/WHtWNdej2j" class="discord-btn" style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #5865F2, #4752c4); color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(88, 101, 242, 0.3); border: none; cursor: pointer;">
+            <i class="fab fa-discord" style="font-size: 1.2rem;"></i>
+            Перейти в Discord
+            <i class="fas fa-external-link-alt" style="font-size: 0.9rem; opacity: 0.9;"></i>
+        </a>
+        
+        <div style="margin-top: 20px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.9rem;">
+                <i class="fas fa-bug" style="color: #5865F2;"></i>
+                <span>Баг-репорты</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.9rem;">
+                <i class="fas fa-comments" style="color: #5865F2;"></i>
+                <span>Помощь</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.9rem;">
+                <i class="fas fa-users" style="color: #5865F2;"></i>
+                <span>Сообщество</span>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </section>
+
+        <!-- Совместимость -->
+        <section class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">Совместимость</h2>
+                
+                <div class="commands-grid">
+                    <div class="command-category">
+                        <h3><i class="fas fa-check-circle"></i> Полностью совместимо</h3>
+                        <div class="command-item">
+                            <div class="command-syntax">OptiFine</div>
+                            <div class="command-desc">Поддержка всех функций OptiFine, включая шейдеры и настраиваемую графику.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">Faithful</div>
+                            <div class="command-desc">Можно использовать вместе с Faithful для более детализированных текстур.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">Xaero's Minimap</div>
+                            <div class="command-desc">Полная совместимость с популярными модами для карт.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="command-category">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Частично совместимо</h3>
+                        <div class="command-item">
+                            <div class="command-syntax">Шейдеры</div>
+                            <div class="command-desc">Некоторые шейдеры могут изменять внешний вид текстур. Рекомендуем тестировать.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">Моды на интерфейс</div>
+                            <div class="command-desc">Моды, изменяющие интерфейс, могут конфликтовать с кастомными элементами HUD.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <!-- Замени весь блок FAQ на этот улучшенный вариант -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Часто задаваемые вопросы</h2>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h3>Ресурспак не работает. Что делать?</h3>
+                        <p>Убедитесь, что вы правильно установили ресурспак и активировали его в настройках игры.</p>
+                    </div>
+                    <div class="faq-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <p>Проверьте следующие моменты:</p>
+                    <ul>
+                        <li>Версия Minecraft соответствует требованиям ресурспака (1.21.4+)</li>
+                        <li>Ресурспак активирован в настройках игры</li>
+                        <li>Архив не поврежден при скачивании</li>
+                        <li>Папка с ресурспаком находится в правильной директории</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h3>Можно ли использовать ресурспак на других серверах?</h3>
+                        <p>Информация о совместимости с другими серверами</p>
+                    </div>
+                    <div class="faq-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, вы можете использовать его где угодно, но учтите:</p>
+                    <ul>
+                        <li>Некоторые текстуры могут отображаться некорректно вне сервера Lumix</li>
+                        <li>Кастомные предметы будут отображаться как стандартные</li>
+                        <li>Для полного функционала рекомендуется использовать на сервере Lumix</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h3>Ресурспак влияет на производительность?</h3>
+                        <p>Информация о влиянии на FPS и производительность</p>
+                    </div>
+                    <div class="faq-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <p>Ресурспак оптимизирован и не должен значительно влиять на производительность:</p>
+                    <ul>
+                        <li>Размер текстур оптимизирован для быстрой загрузки</li>
+                        <li>Минимальное влияние на FPS (1-3%)</li>
+                        <li>Если заметили падение FPS, попробуйте уменьшить настройки графики</li>
+                        <li>Рекомендуется использовать OptiFine для лучшей оптимизации</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h3>Как сообщить об ошибке в текстурах?</h3>
+                        <p>Процесс сообщения о багах и проблемах</p>
+                    </div>
+                    <div class="faq-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <p>Если вы обнаружили ошибку в текстурах, сообщите об этом:</p>
+                    <ul>
+                        <li>Сделайте скриншот проблемы</li>
+                        <li>Опишите условия, при которых возникает ошибка</li>
+                        <li>Укажите версию Minecraft и ресурспака</li>
+                        <li>Напишите в Discord сервере в канал <strong>#баг-репорты</strong></li>
+                    </ul>
+                    
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                        Lumix
+                    </div>
+                    <p style="color: var(--text-secondary);">Около-ванильный Minecraft сервер с уникальными механиками и дружелюбным сообществом.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 15px;">Навигация</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Главная</a>
+                        <a href="commands.html">Команды</a>
+                        <a href="content-creator.html">Контент-мейкеры</a>
+                        <a href="rules.html">Правила</a>
+                        <a href="shop.html">Магазин</a>
+                        <a href="moderator.html">Стать модератором</a>
+                        <a href="mods.html">Запрещенные моды</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 15px;">Ссылки</h4>
+                    <div class="footer-links">
+                        <a href="https://discord.gg/WHtWNdej2j">Discord</a>
+                        <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                        <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
+                        <a href="https://t.me/lumixsmp">Telegram</a>
+                        <a href="http://193.23.199.39:25820/">Карта мира</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                © 2025 Lumix. Все права защищены.<br>
+                Сервер не аффилирован с Mojang Studios. Minecraft является товарным знаком Mojang Studios.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       // Мобильное меню
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+
+mobileMenuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+// Закрытие меню при клике на контент на мобильных устройствах
+if (window.innerWidth <= 1024) {
+    mainContent.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+}
+
+// Аккордеон для боковой панели
+const navSections = document.querySelectorAll('.nav-section-title');
+
+navSections.forEach(section => {
+    section.addEventListener('click', () => {
+        const parent = section.parentElement;
+        // Закрываем все остальные секции
+        document.querySelectorAll('.nav-section').forEach(sec => {
+            if (sec !== parent) {
+                sec.classList.remove('active');
+            }
+        });
+        // Открываем/закрываем текущую
+        parent.classList.toggle('active');
+    });
+});
+
+// Подсветка активной страницы
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const navLinks = document.querySelectorAll('.nav-subitems a');
+
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+        // Автоматически открываем родительскую секцию
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    }
+});
+
+// Переключение темы
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Применяем сохраненную тему
+if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    
+    const isLight = document.body.classList.contains('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Автоматически открываем активный раздел при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const activeLinks = document.querySelectorAll('.nav-subitems a.active');
+    activeLinks.forEach(link => {
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    });
+});
+    </script>
+
+    <script>
+// JavaScript для аккордеона FAQ
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Закрываем все остальные элементы
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Открываем/закрываем текущий элемент
+            item.classList.toggle('active');
+        });
+    });
+    
+    // Автоматически открываем первый элемент
+    if (faqItems.length > 0) {
+        faqItems[0].classList.add('active');
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уникальные крафты - Lumix Minecraft сервер</title>
+    
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    
+    <!-- Open Graph разметка -->
+    <meta property="og:title" content="Уникальные крафты - Lumix Minecraft сервер">
+    <meta property="og:description" content="Уникальные крафты сервера Lumix">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://kotmir.github.io/Kotmirgithub.io/crafts.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumix">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Уникальные крафты - Lumix Minecraft сервер">
+    <meta name="twitter:description" content="Уникальные крафты сервера Lumix">
+    <meta name="twitter:image" content="img/logo.jpg">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="Уникальные крафты сервера Lumix - специальные рецепты, доступные только на нашем сервере">
+    <meta name="keywords" content="minecraft, крафты, рецепты, lumix, сервер, майнкрафт, уникальные">
+    
+    <!-- Стили и шрифты -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Уникальные стили для страницы крафтов */
+        .crafts-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .category-btn {
+            background: rgba(42, 42, 42, 0.4);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border-color: transparent;
+        }
+        
+        .crafts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .craft-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .craft-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .craft-image {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 10, 10, 0.5);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .craft-image img {
+             max-width: 100%;
+              max-height: 100%;
+             object-fit: contain;
+             transition: transform 0.3s;
+        }   
+        
+        .craft-card:hover .craft-image img {
+            transform: scale(1.05);
+        }
+        
+        .craft-content {
+            padding: 20px;
+        }
+        
+        .craft-name {
+            font-size: 1.3rem;
+            color: var(--accent-light);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .craft-description {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .craft-ingredients {
+            margin-top: 15px;
+        }
+        
+        .ingredients-title {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .ingredients-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .ingredient {
+            background: rgba(42, 42, 42, 0.6);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        
+        .craft-category {
+            display: inline-block;
+            background: rgba(201, 95, 91, 0.2);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            border: 1px solid rgba(201, 95, 91, 0.3);
+        }
+        
+        .craft-tip {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid var(--success);
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .craft-tip h4 {
+            color: var(--success);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-light);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Кнопка мобильного меню -->
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Боковая навигация -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">
+            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+            <div class="logo-text">Lumix</div>
+        </div>
+        <div class="sidebar-theme-toggle">
+            <button class="theme-btn" id="themeToggle" title="Сменить тему">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Главное меню -->
+    <div class="nav-main">
+        <!-- Правила -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gavel"></i> Правила</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="rules.html"><i class="fas fa-balance-scale"></i> Политика сервера</a></li>
+                <li><a href="punishments.html"><i class="fas fa-exclamation-triangle"></i> Система наказаний</a></li>
+               <li><a href="admin-rules.html"><i class="fas fa-user-shield"></i> Для администрации</a></li>
+               <li><a href="guide-rules.html"><i class="fas fa-user-graduate"></i> Для проводников</a></li>
+            </ul>
+        </div>
+
+        <!-- Крафты -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-hammer"></i> Крафты</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="crafts.html"><i class="fas fa-tools"></i> Уникальные крафты</a></li>
+                <li><a href="brewery.html"><i class="fas fa-wine-bottle"></i> Brewery</a></li>
+            </ul>
+        </div>
+        
+        <!-- Игровой процесс -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gamepad"></i> Игровой процесс</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="behavior.html"><i class="fas fa-palette"></i> Ман-Арты и картины</a></li>
+                <li><a href="features.html"><i class="fas fa-star"></i> Фишки сервера</a></li>
+                <li><a href="kingdom.html"><i class="fas fa-crown"></i> Королевство</a></li>
+            </ul>
+        </div>
+        
+        <!-- Команды -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-terminal"></i> Команды</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="commands.html"><i class="fas fa-list"></i> Все команды</a></li>
+                <li><a href="chat.html"><i class="fas fa-comments"></i> Чат и взаимодействие</a></li>
+            </ul>
+        </div>
+        
+        <!-- Сообщество -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-users"></i> Сообщество</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="history.html"><i class="fas fa-history"></i> История сервера</a></li>
+                <li><a href="team.html"><i class="fas fa-users-cog"></i> Команда сервера</a></li>
+                <li><a href="content-creator.html"><i class="fas fa-video"></i> Контент-мейкеры</a></li>
+                <li><a href="moderator.html"><i class="fas fa-user-shield"></i> Стать модератором</a></li>
+            </ul>
+        </div>
+        
+        <!-- Магазин и услуги -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-shopping-cart"></i> Магазин</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="shop.html"><i class="fas fa-gem"></i> Донат услуги</a></li>
+               
+            </ul>
+        </div>
+        
+        <!-- Техническое -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-cogs"></i> Техническое</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="mods.html"><i class="fas fa-plug"></i> Модификации</a></li>
+                <li><a href="resourcepack.html"><i class="fas fa-paint-brush"></i> РесурсПак</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Дополнительное -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-plus-circle"></i> Дополнительное</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="additional.html"><i class="fas fa-info-circle"></i> Доп. информация</a></li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Быстрые ссылки -->
+    <div class="sidebar-quick-links">
+        <div class="quick-links-title">Быстрые ссылки</div>
+        <div class="quick-links">
+            <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+            </a>
+            <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Магазин</span>
+            </a>
+            <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+                <i class="fas fa-map"></i>
+                <span>Карта мира</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <!-- Заголовок страницы -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="section-title">Уникальные крафты</h1>
+                <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 40px;">
+                    Специальные рецепты, доступные только на сервере Lumix. Уникальные крафты добавляют разнообразия 
+                    в игровой процесс и открывают новые возможности для творчества и строительства.
+                </p>
+                
+                <!-- Поиск -->
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Поиск крафтов...">
+                </div>
+                
+                <!-- Категории -->
+                <div class="crafts-categories" id="craftCategories">
+                    <button class="category-btn active" data-category="all">Все крафты</button>
+                    <button class="category-btn" data-category="decor">Декоративные</button>
+                    <button class="category-btn" data-category="functional">Функциональные</button>
+                    <button class="category-btn" data-category="building">Строительные</button>
+                    <button class="category-btn" data-category="tools">Инструменты</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Сетка крафтов -->
+        <section class="section">
+            <div class="container">
+                <div class="crafts-grid" id="craftsGrid">
+                    <!-- Крафт 1 -->
+                    <div class="craft-card" data-category="decor" data-name="блок света">
+                        <div class="craft-image">
+                            <img src="img/1.jpg" alt="Блок света">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Декоративные</div>
+                            <h3 class="craft-name">Блок света</h3>
+                            <p class="craft-description">
+                                Источник света, который не виден как блок, но освещает область вокруг себя. 
+                                Идеально для скрытого освещения в builds.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">8х стекло</span>
+                                    <span class="ingredient">1х светокамень</span>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 2 -->
+                    <div class="craft-card" data-category="tools" data-name="крылья lumix">
+                        <div class="craft-image">
+                            <img src="img/2.jpg" alt="Крылья Lumix">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Инструменты</div>
+                            <h3 class="craft-name">Крылья Lumix</h3>
+                            <p class="craft-description">
+                                Уникальные крылья с улучшенной маневренностью и специальными визуальными эффектами. 
+                                Позволяют парить в воздухе дольше обычного.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">2х сердце моря</span>
+                                    <span class="ingredient">2х кристалл энда</span>
+                                    <span class="ingredient">2х скалк</span>
+                                    <span class="ingredient">1х элитры</span>
+                                    <span class="ingredient">1х скалковый крикун</span>
+                                    <span class="ingredient">1х голова дракона</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 3 -->
+                    <div class="craft-card" data-category="decor" data-name="светящаяся рамка">
+                        <div class="craft-image">
+                            <img src="img/3.jpg" alt="Светящаяся рамка">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Декоративные</div>
+                            <h3 class="craft-name">Светящаяся рамка</h3>
+                            <p class="craft-description">
+                                Рамка для предметов, которая светится в темноте. Отлично подходит для выделения 
+                                важных предметов в ваших builds.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">Рамка ×1</span>
+                                    <span class="ingredient">Светокамень ×4</span>
+                                    <span class="ingredient">Золотой слиток ×4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 4 -->
+                    <div class="craft-card" data-category="decor" data-name="невидимая рамка">
+                        <div class="craft-image">
+                            <img src="img/4.jpg" alt="Невидимая рамка">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Декоративные</div>
+                            <h3 class="craft-name">Невидимая рамка</h3>
+                            <p class="craft-description">
+                                Рамка, которая становится невидимой после размещения, оставляя только предмет внутри. 
+                                Создает эффект парящего предмета.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">Рамка ×1</span>
+                                    <span class="ingredient">Стекло ×4</span>
+                                    <span class="ingredient">Эндер-жемчуг ×2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 5 -->
+                    <div class="craft-card" data-category="functional" data-name="звезда пустоты">
+                        <div class="craft-image">
+                            <img src="img/5.jpg" alt="Звезда пустоты">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Функциональные</div>
+                            <h3 class="craft-name">Звезда Пустоты</h3>
+                            <p class="craft-description">
+                                Мощный компонент для создания уникальных предметов. Используется в различных 
+                                продвинутых крафтах на сервере.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">2х незеритовый блок</span>
+                                    <span class="ingredient">2х череп визер скелета</span>
+                                    <span class="ingredient">2х плачущий обсидиан</span>
+                                    <span class="ingredient">1х осколок эха</span>
+                                    <span class="ingredient">1х звезда незера</span>
+                                    <span class="ingredient">1х пластинка 11</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 6 -->
+                    <div class="craft-card" data-category="building" data-name="укрепленный глубинный сланец">
+                        <div class="craft-image">
+                            <img src="img/6.jpg" alt="Укрепленный глубинный сланец">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Строительные</div>
+                            <h3 class="craft-name">Укрепленный глубинный сланец</h3>
+                            <p class="craft-description">
+                                Прочный строительный блок с высокой взрывоустойчивостью. Идеален для создания 
+                                защищенных конструкций и подземных баз.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">Глубинный сланец ×4</span>
+                                    <span class="ingredient">1х скалк</span>
+                                    <span class="ingredient">1х скалковый блок</span>
+                                    <span class="ingredient">1х скалк сенсор</span>
+                                    <span class="ingredient">1х скалковый крикун</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 7 -->
+                    <div class="craft-card" data-category="functional" data-name="паутина">
+                        <div class="craft-image">
+                            <img src="img/7.jpg" alt="Паутина">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Функциональные</div>
+                            <h3 class="craft-name">Паутина</h3>
+                            <p class="craft-description">
+                                Декоративный блок, который также замедляет движение. Полезен для создания ловушек 
+                                и декоративных элементов в builds.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">Нить ×8</span>
+                                    <span class="ingredient">1х слизь</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 8 -->
+                    <div class="craft-card" data-category="functional" data-name="черный краситель">
+                        <div class="craft-image">
+                            <img src="img/8.jpg" alt="Черный краситель">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Функциональные</div>
+                            <h3 class="craft-name">Черный краситель</h3>
+                            <p class="craft-description">
+                                Альтернативный способ получения черного красителя. Полезен когда чернильные 
+                                мешочки сложно найти.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">Уголь ×1</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 9 -->
+                    <div class="craft-card" data-category="functional" data-name="нитки">
+                        <div class="craft-image">
+                            <img src="img/9.jpg" alt="Нитки">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Функциональные</div>
+                            <h3 class="craft-name">Нитки</h3>
+                            <p class="craft-description">
+                                Альтернативный способ создания ниток. Полезен когда пауки недоступны или 
+                                для массового производства.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">Белая шерсть ×1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 10 -->
+                    <div class="craft-card" data-category="building" data-name="красный песчаник">
+                        <div class="craft-image">
+                            <img src="img/10.jpg" alt="Красный песчаник">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Строительные</div>
+                            <h3 class="craft-name">Красный песчаник</h3>
+                            <p class="craft-description">
+                                Декоративный строительный блок из красного песка. Альтернатива обычному песчанику 
+                                для разнообразия в строительстве.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">2х песчаник</span>
+                                    <span class="ingredient"> 1х красный краситель</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 11 -->
+                    <div class="craft-card" data-category="functional" data-name="красный песок">
+                        <div class="craft-image">
+                            <img src="img/11.jpg" alt="Красный песок">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Функциональные</div>
+                            <h3 class="craft-name">Красный песок</h3>
+                            <p class="craft-description">
+                                Альтернативный способ получения красного песка. Полезен когда месса недоступна 
+                                или для экономии времени.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">Песок ×8</span>
+                                    <span class="ingredient">Красный краситель ×1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Крафт 12 -->
+                    <div class="craft-card" data-category="functional" data-name="гравий">
+                        <div class="craft-image">
+                            <img src="img/12.jpg" alt="Гравий">
+                        </div>
+                        <div class="craft-content">
+                            <div class="craft-category">Функциональные</div>
+                            <h3 class="craft-name">Гравий</h3>
+                            <p class="craft-description">
+                                Альтернативный способ получения гравия. Полезен когда природные залежи 
+                                гравия недоступны или исчерпаны.
+                            </p>
+                            <div class="craft-ingredients">
+                                <div class="ingredients-title">Ингредиенты:</div>
+                                <div class="ingredients-list">
+                                    <span class="ingredient">4х кремень</span>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Сообщение, если ничего не найдено -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>Крафты не найдены</h3>
+                    <p>Попробуйте изменить поисковый запрос или выбрать другую категорию</p>
+                </div>
+                
+                <!-- Подсказка -->
+                <div class="craft-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Совет по использованию крафтов</h4>
+                    <p>Уникальные крафты добавляют разнообразия в игровой процесс и открывают новые возможности для строительства и декора! 
+                    Экспериментируйте с различными комбинациями и создавайте уникальные проекты с помощью этих специальных рецептов.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Футер -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <div class="footer-logo">
+                            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                            Lumix
+                        </div>
+                        <p style="color: var(--text-secondary);">Около-ванильный Minecraft сервер с уникальными механиками и дружелюбным сообществом.</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Навигация</h4>
+                        <div class="footer-links">
+                            <a href="index.html">Главная</a>
+                            <a href="commands.html">Команды</a>
+                            <a href="content-creator.html">Контент-мейкеры</a>
+                            <a href="rules.html">Правила</a>
+                            <a href="shop.html">Магазин</a>
+                            <a href="moderator.html">Стать модератором</a>
+                            <a href="mods.html">Запрещенные моды</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Ссылки</h4>
+                        <div class="footer-links">
+                            <a href="https://discord.gg/WHtWNdej2j">Discord</a>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                            <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
+                            <a href="https://t.me/lumixsmp">Telegram</a>
+                            <a href="http://193.23.199.39:25820/">Карта мира</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 Lumix. Все права защищены.<br>
+                    Сервер не аффилирован с Mojang Studios. Minecraft является товарным знаком Mojang Studios.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+     // Мобильное меню
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+
+mobileMenuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+// Закрытие меню при клике на контент на мобильных устройствах
+if (window.innerWidth <= 1024) {
+    mainContent.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+}
+
+// Аккордеон для боковой панели
+const navSections = document.querySelectorAll('.nav-section-title');
+
+navSections.forEach(section => {
+    section.addEventListener('click', () => {
+        const parent = section.parentElement;
+        // Закрываем все остальные секции
+        document.querySelectorAll('.nav-section').forEach(sec => {
+            if (sec !== parent) {
+                sec.classList.remove('active');
+            }
+        });
+        // Открываем/закрываем текущую
+        parent.classList.toggle('active');
+    });
+});
+
+// Подсветка активной страницы
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const navLinks = document.querySelectorAll('.nav-subitems a');
+
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+        // Автоматически открываем родительскую секцию
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    }
+});
+
+// Переключение темы
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Применяем сохраненную тему
+if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    
+    const isLight = document.body.classList.contains('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Автоматически открываем активный раздел при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const activeLinks = document.querySelectorAll('.nav-subitems a.active');
+    activeLinks.forEach(link => {
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    });
+});
+    </script>
+</body>
+</html>

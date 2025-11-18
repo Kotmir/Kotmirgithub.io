@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumix - Дополнительная информация</title>
+    <style>
+
+        .resource-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.resource-btn {
+    transition: all 0.3s ease !important;
+}
+
+.resource-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(201, 95, 91, 0.4);
+}
+
+.resource-icon {
+    transition: transform 0.3s ease;
+}
+
+.resource-card:hover .resource-icon {
+    transform: scale(1.1);
+}
+
+
+/* Стили для улучшенного FAQ */
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.faq-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    cursor: pointer;
+    gap: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background: rgba(42, 42, 42, 0.3);
+}
+
+.faq-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.faq-text {
+    flex: 1;
+}
+
+.faq-text h3 {
+    color: var(--accent-light);
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.faq-text p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.faq-arrow {
+    color: var(--text-muted);
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-arrow {
+    transform: rotate(180deg);
+    color: var(--accent);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: rgba(10, 10, 10, 0.4);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+.faq-answer-content {
+    padding: 0 25px 25px 95px;
+}
+
+.faq-answer-content p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.faq-answer-content ul {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.faq-answer-content li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.faq-answer-content li::before {
+    content: "•";
+    color: var(--accent);
+    font-weight: bold;
+    position: absolute;
+    left: -15px;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.faq-item.active .faq-answer-content {
+    animation: fadeInUp 0.4s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .faq-question {
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .faq-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .faq-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .faq-answer-content {
+        padding: 0 20px 20px 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-question {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .faq-answer-content {
+        padding: 0 20px 20px 20px;
+    }
+    
+    .faq-text {
+        text-align: center;
+    }
+}
+
+    </style>
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    
+    <!-- Open Graph разметка -->
+    <meta property="og:title" content="Lumix - Дополнительная информация">
+    <meta property="og:description" content="FAQ, гайды и полезная информация для игроков сервера Lumix">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://kotmir.github.io/Kotmirgithub.io/additional.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumix">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="FAQ, гайды и полезная информация для игроков сервера Lumix">
+    <meta name="keywords" content="minecraft, lumix, гайды, FAQ, помощь, советы">
+    
+    <!-- Стили -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Кнопка мобильного меню -->
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Боковая навигация -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">
+            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+            <div class="logo-text">Lumix</div>
+        </div>
+        <div class="sidebar-theme-toggle">
+            <button class="theme-btn" id="themeToggle" title="Сменить тему">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Главное меню -->
+    <div class="nav-main">
+        <!-- Правила -->
+        <div class="nav-section">    
+            <div class="nav-section-title">
+                <span><i class="fas fa-gavel"></i> Правила</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="rules.html"><i class="fas fa-balance-scale"></i> Политика сервера</a></li>
+                <li><a href="punishments.html"><i class="fas fa-exclamation-triangle"></i> Система наказаний</a></li>
+                <li><a href="admin-rules.html"><i class="fas fa-user-shield"></i> Для администрации</a></li>
+                <li><a href="guide-rules.html"><i class="fas fa-user-graduate"></i> Для проводников</a></li>
+            </ul>
+        </div>
+
+        <!-- Крафты -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-hammer"></i> Крафты</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="crafts.html"><i class="fas fa-tools"></i> Уникальные крафты</a></li>
+                <li><a href="brewery.html"><i class="fas fa-wine-bottle"></i> Brewery</a></li>
+            </ul>
+        </div>
+        
+        <!-- Игровой процесс -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gamepad"></i> Игровой процесс</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="behavior.html"><i class="fas fa-palette"></i> Ман-Арты и картины</a></li>
+                <li><a href="features.html"><i class="fas fa-star"></i> Фишки сервера</a></li>
+                <li><a href="kingdom.html"><i class="fas fa-crown"></i> Королевство</a></li>
+            </ul>
+        </div>
+        
+        <!-- Команды -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-terminal"></i> Команды</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="commands.html"><i class="fas fa-list"></i> Все команды</a></li>
+                <li><a href="chat.html"><i class="fas fa-comments"></i> Чат и взаимодействие</a></li>
+            </ul>
+        </div>
+        
+        <!-- Сообщество -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-users"></i> Сообщество</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="history.html"><i class="fas fa-history"></i> История сервера</a></li>
+                <li><a href="team.html"><i class="fas fa-users-cog"></i> Команда сервера</a></li>
+                <li><a href="content-creator.html"><i class="fas fa-video"></i> Контент-мейкеры</a></li>
+                <li><a href="moderator.html"><i class="fas fa-user-shield"></i> Стать модератором</a></li>
+            </ul>
+        </div>
+        
+        <!-- Магазин и услуги -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-shopping-cart"></i> Магазин</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="shop.html"><i class="fas fa-gem"></i> Донат услуги</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Техническое -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-cogs"></i> Техническое</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="mods.html"><i class="fas fa-plug"></i> Модификации</a></li>
+                <li><a href="resourcepack.html"><i class="fas fa-paint-brush"></i> РесурсПак</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Дополнительное -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-plus-circle"></i> Дополнительное</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="additional.html"><i class="fas fa-info-circle"></i> Доп. информация</a></li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Быстрые ссылки -->
+    <div class="sidebar-quick-links">
+        <div class="quick-links-title">Быстрые ссылки</div>
+        <div class="quick-links">
+            <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+            </a>
+            <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Магазин</span>
+            </a>
+            <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+                <i class="fas fa-map"></i>
+                <span>Карта мира</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Основной контент -->
+    <div class="main-content">
+        <!-- Герой секция -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Дополнительная информация</h1>
+                        <p>Полезные гайды, часто задаваемые вопросы и советы для комфортной игры на сервере Lumix. Здесь вы найдете ответы на большинство вопросов, которые могут возникнуть во время игры.</p>
+                    </div>
+                    <div class="hero-image">
+                        <img src="img/logo.jpg" alt="Дополнительная информация">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">Часто задаваемые вопросы</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 20px auto 40px;">
+            Ответы на самые популярные вопросы от игроков. Если не нашли ответ - задайте вопрос в Discord!
+        </p>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h3>Как подать заявку на вайтлист?</h3>
+                        <p>Процесс регистрации и получения доступа к серверу</p>
+                    </div>
+                    <div class="faq-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Для подачи заявки на вайтлист необходимо:</p>
+                        <ul>
+                            <li>Зарегистрироваться на нашем Discord-сервере</li>
+                            <li>Найти канал <strong>#заявка</strong></li>
+                            <li>Заполнить анкету по указанному шаблону</li>
+                            <li>Ожидать проверки модерацией</li>
+                        </ul>
+                        <p><strong>Время обработки:</strong> до 24 часов</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h3>Какие версии Minecraft поддерживаются?</h3>
+                        <p>Совместимость с различными версиями игры</p>
+                    </div>
+                    <div class="faq-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Сервер поддерживает следующие версии Minecraft:</p>
+                        <ul>
+                            <li><strong>Основная поддержка:</strong> 1.21.4 - 1.21.8</li>
+                            <li><strong>Рекомендуемая:</strong> 1.21.8 (последняя стабильная)</li>
+                            <li><strong>Экспериментальная:</strong> 1.22+ (возможны ошибки)</li>
+                        </ul>
+                        <p>Используйте последнюю версию для максимальной стабильности.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h3>Как восстановить доступ к аккаунту?</h3>
+                        <p>Решение проблем с входом на сервер</p>
+                    </div>
+                    <div class="faq-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Если вы забыли пароль от аккаунта:</p>
+                        <ul>
+                            <li>Обратитесь к администрации через тикет в Discord</li>
+                            <li>Подготовьте доказательства владения аккаунтом</li>
+                            <li>Укажите никнейм и примерную дату регистрации</li>
+                            <li>Будьте готовы ответить на проверочные вопросы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h3>Есть ли на сервере ванильные достижения?</h3>
+                        <p>Система достижений и наград</p>
+                    </div>
+                    <div class="faq-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>На сервере доступны:</p>
+                        <ul>
+                            <li><strong>Все ванильные достижения</strong> - работают как в одиночной игре</li>
+                            <li><strong>Уникальные достижения Lumix</strong> - специальные задания сервера</li>
+                            <li><strong>Сезонные достижения</strong> - доступны во время ивентов</li>
+                            <li><strong>Секретные достижения</strong> - найдите их сами!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h3>Как работает защита от гриферства?</h3>
+                        <p>Системы безопасности и защиты построек</p>
+                    </div>
+                    <div class="faq-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Мы используем многоуровневую систему защиты:</p>
+                        <ul>
+                            <li><strong>CoreProtect</strong> - отслеживает все действия игроков</li>
+                            <li><strong>Автоматические бэкапы</strong> - каждые 6 часов</li>
+                            <li><strong>Система регионов</strong> - защита личных территорий</li>
+                            <li><strong>Модерация 24/7</strong> - быстрое реагирование на нарушения</li>
+                        </ul>
+                        <p>При необходимости мы можем откатить любые разрушения.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Гайды для новичков -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Гайды для новичков</h2>
+                
+                <div class="steps">
+                    <div class="step-card">
+                        <div class="step-number"><i class="fas fa-home"></i></div>
+                        <h3>Первые шаги на сервере</h3>
+                        <p>После входа на сервер обязательно выполните команду /register для создания аккаунта. Затем найдите безопасное место для постройки первого укрытия. Не забудьте установить кровать для точки возрождения.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number"><i class="fas fa-tools"></i></div>
+                        <h3>Основные команды</h3>
+                        <p>Изучите основные команды сервера: /help - список команд </p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number"><i class="fas fa-store"></i></div>
+                        <h3>Торговля с другими игроками</h3>
+                        <p>Для торговли с другими игроками используйте ары алмазная руда. Вы можете обменивать ресурсы на жетоны и наоборот. Торговля между игроками осуществляется через аукцион или личные сделки.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Советы по выживанию -->
+        <section class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">Советы по выживанию и строительству</h2>
+                
+                <div class="commands-grid">
+                    <div class="command-category">
+                        <h3><i class="fas fa-shield-alt"></i> Безопасность</h3>
+                        <div class="command-item">
+                            <div class="command-syntax">Защита от мобов</div>
+                            <div class="command-desc">Используйте факелы для освещения территории, стройте стены высотой не менее 2 блоков, устанавливайте железные двери с кнопками.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">Хранение ценностей</div>
+                            <div class="command-desc">Ценные предметы храните в запертых сундуках. Используйте Ender Chest для хранения самых ценных вещей - они доступны только вам.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="command-category">
+                        <h3><i class="fas fa-hammer"></i> Строительство</h3>
+                        <div class="command-item">
+                            <div class="command-syntax">Планирование</div>
+                            <div class="command-desc">Перед строительством сделайте чертеж в творческом режиме или используйте специальные программы для планирования.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">Материалы</div>
+                            <div class="command-desc">Используйте разнообразные материалы для текстурности. Не забывайте про детали - лестницы, плиты, кнопки делают постройку живой.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="command-category">
+                        <h3><i class="fas fa-seedling"></i> Фермерство</h3>
+                        <div class="command-item">
+                            <div class="command-syntax">Автоматические фермы</div>
+                            <div class="command-desc">Стройте автоматические фермы для получения ресурсов. На сервере разрешены все ванильные механизмы с редстоуном.</div>
+                        </div>
+                        
+                        <div class="command-item">
+                            <div class="command-syntax">Эффективность</div>
+                            <div class="command-desc">Оптимизируйте расположение грядок, используйте воду для ускорения роста, устанавливайте освещение для работы ночью.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Сезонные ивенты -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Сезонные ивенты</h2>
+                
+                <div class="steps">
+                    <div class="step-card">
+                        <div class="step-number"><i class="fas fa-snowflake"></i></div>
+                        <h3>Зимний фестиваль</h3>
+                        <p>Ежегодное празднование Нового года с особыми крафтами, тематическими квестами и подарками для всех активных игроков. Проходит с 15 декабря по 15 января.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number"><i class="fas fa-egg"></i></div>
+                        <h3>Весеннее обновление</h3>
+                        <p>Весенний ивент с обновлением природы, новыми мобами и пасхальными сюрпризами. Игроки могут найти специальные яйца с уникальными наградами.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number"><i class="fas fa-sun"></i></div>
+                        <h3>Летнее приключение</h3>
+                        <p>Летом запускается особый режим с новыми биомами, заданиями и системой достижений. Идеальное время для исследования и приключений.</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+    <p style="color: var(--text-secondary); margin-bottom: 25px;">
+        Следите за анонсами в Discord, чтобы не пропустить начало новых ивентов и получить эксклюзивные награды!
+    </p>
+    
+    <!-- Улучшенная Discord карточка -->
+    <div style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(42, 42, 42, 0.6)); border-radius: 20px; padding: 40px; margin: 0 auto 30px; max-width: 600px; text-align: center; border: 2px solid #5865F2; position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+        <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: linear-gradient(135deg, #5865F2, #4752c4); border-radius: 50%; opacity: 0.1;"></div>
+        <div style="position: absolute; bottom: -25px; left: -25px; width: 80px; height: 80px; background: linear-gradient(135deg, #4752c4, #5865F2); border-radius: 50%; opacity: 0.1;"></div>
+        
+        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #5865F2, #4752c4); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white; box-shadow: 0 8px 25px rgba(88, 101, 242, 0.3);">
+            <i class="fab fa-discord"></i>
+        </div>
+        
+        <h4 style="color: #5865F2; font-size: 1.5rem; margin-bottom: 12px; font-weight: 700;">Будьте в курсе ивентов!</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 25px; line-height: 1.5;">
+            Присоединяйтесь к нашему Discord сообществу, чтобы первыми узнавать о новых ивентах, 
+            получать эксклюзивные награды и участвовать в специальных активностях
+        </p>
+        
+        <a href="https://discord.gg/WHtWNdej2j" style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #5865F2, #4752c4); color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(88, 101, 242, 0.3); position: relative; overflow: hidden;">
+            <i class="fab fa-discord" style="font-size: 1.2rem;"></i>
+            Присоединиться к Discord
+            <i class="fas fa-external-link-alt" style="font-size: 0.9rem; opacity: 0.9;"></i>
+        </a>
+    </div>
+</div>
+        </section>
+
+        <!-- Полезные ресурсы -->
+<section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">Полезные ресурсы</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 20px auto 40px;">
+            Все необходимые ссылки и инструменты для комфортной игры на сервере Lumix. 
+            Сохраните эти ресурсы для быстрого доступа!
+        </p>
+        
+        <div class="resources-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px;">
+            <!-- Карта мира -->
+            <div class="resource-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 30px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+                <div class="resource-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #4ECDC4, #556270); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white;">
+                    <i class="fas fa-map"></i>
+                </div>
+                <h3 style="color: var(--accent-light); margin-bottom: 15px; font-size: 1.3rem;">Онлайн карта мира</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.5;">
+                    Интерактивная карта сервера с отображением построек и территорий в реальном времени
+                </p>
+                <a href="http://193.23.199.39:25820/" class="resource-btn" style="display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease;">
+                    Открыть карту
+                </a>
+            </div>
+
+            <!-- Discord -->
+            <div class="resource-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 30px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+                <div class="resource-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #5865F2, #7289DA); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white;">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <h3 style="color: var(--accent-light); margin-bottom: 15px; font-size: 1.3rem;">Discord-сервер</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.5;">
+                    Основная площадка для общения, анонсов и поддержки. Здесь вы найдете ответы на все вопросы
+                </p>
+                <a href="https://discord.gg/WHtWNdej2j" class="resource-btn" style="display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease;">
+                    Присоединиться
+                </a>
+            </div>
+
+            <!-- YouTube -->
+            <div class="resource-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 30px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+                <div class="resource-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF0000, #FF6B6B); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white;">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <h3 style="color: var(--accent-light); margin-bottom: 15px; font-size: 1.3rem;">YouTube-канал</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.5;">
+                    Официальный канал сервера с обзорами, гайдами и записями интересных событий
+                </p>
+                <a href="https://www.youtube.com/@Lumix_SMP" class="resource-btn" style="display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease;">
+                    Подписаться
+                </a>
+            </div>
+
+            <!-- Вики Minecraft -->
+            <div class="resource-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 30px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+                <div class="resource-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF9A8B, #FF6A88); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white;">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 style="color: var(--accent-light); margin-bottom: 15px; font-size: 1.3rem;">Официальная вики</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.5;">
+                    Полная база знаний по Minecraft - механики, крафты, мобы и многое другое
+                </p>
+                <a href="https://minecraft.wiki/" class="resource-btn" style="display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease;">
+                    Изучить вики
+                </a>
+            </div>
+
+            <!-- Telegram -->
+            <div class="resource-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 30px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+                <div class="resource-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #0088cc, #00aced); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white;">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <h3 style="color: var(--accent-light); margin-bottom: 15px; font-size: 1.3rem;">Telegram-канал</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.5;">
+                    Быстрые анонсы и важные уведомления. Будьте в курсе всех обновлений сервера
+                </p>
+                <a href="https://t.me/lumixsmp" class="resource-btn" style="display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease;">
+                    Подписаться
+                </a>
+            </div>
+
+            <!-- Мониторинг -->
+            <div class="resource-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); border-radius: 15px; padding: 30px; border: 1px solid var(--border); text-align: center; backdrop-filter: blur(10px);">
+                <div class="resource-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #556270, #4ECDC4); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white;">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 style="color: var(--accent-light); margin-bottom: 15px; font-size: 1.3rem;">Мониторинг сервера</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.5;">
+                    Статистика онлайна и рейтинг сервера. Оставляйте отзывы и следите за развитием проекта
+                </p>
+                <a href="https://hotmc.ru/minecraft-server-270268" class="resource-btn" style="display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease;">
+                    Открыть мониторинг
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                        Lumix
+                    </div>
+                    <p style="color: var(--text-secondary);">Около-ванильный Minecraft сервер с уникальными механиками и дружелюбным сообществом.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 15px;">Навигация</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Главная</a>
+                        <a href="commands.html">Команды</a>
+                        <a href="content-creator.html">Контент-мейкеры</a>
+                        <a href="rules.html">Правила</a>
+                        <a href="shop.html">Магазин</a>
+                        <a href="moderator.html">Стать модератором</a>
+                        <a href="mods.html">Запрещенные моды</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 15px;">Ссылки</h4>
+                    <div class="footer-links">
+                        <a href="https://discord.gg/WHtWNdej2j">Discord</a>
+                        <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                        <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
+                        <a href="https://t.me/lumixsmp">Telegram</a>
+                        <a href="http://193.23.199.39:25820/">Карта мира</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                © 2025 Lumix. Все права защищены.<br>
+                Сервер не аффилирован с Mojang Studios. Minecraft является товарным знаком Mojang Studios.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+
+mobileMenuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+// Закрытие меню при клике на контент на мобильных устройствах
+if (window.innerWidth <= 1024) {
+    mainContent.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+}
+
+// Аккордеон для боковой панели
+const navSections = document.querySelectorAll('.nav-section-title');
+
+navSections.forEach(section => {
+    section.addEventListener('click', () => {
+        const parent = section.parentElement;
+        // Закрываем все остальные секции
+        document.querySelectorAll('.nav-section').forEach(sec => {
+            if (sec !== parent) {
+                sec.classList.remove('active');
+            }
+        });
+        // Открываем/закрываем текущую
+        parent.classList.toggle('active');
+    });
+});
+
+// Подсветка активной страницы
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const navLinks = document.querySelectorAll('.nav-subitems a');
+
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+        // Автоматически открываем родительскую секцию
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    }
+});
+
+// Переключение темы
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Применяем сохраненную тему
+if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    
+    const isLight = document.body.classList.contains('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Автоматически открываем активный раздел при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const activeLinks = document.querySelectorAll('.nav-subitems a.active');
+    activeLinks.forEach(link => {
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    });
+});
+    </script>
+
+    <script>
+// JavaScript для аккордеона FAQ
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Закрываем все остальные элементы
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Открываем/закрываем текущий элемент
+            item.classList.toggle('active');
+        });
+    });
+    
+    // Автоматически открываем первый элемент
+    if (faqItems.length > 0) {
+        faqItems[0].classList.add('active');
+    }
+});
+</script>
+</body>
+</html>

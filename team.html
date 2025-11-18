@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Команда - Lumix Minecraft сервер</title>
+    
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    
+    <!-- Open Graph разметка -->
+    <meta property="og:title" content="Команда - Lumix Minecraft сервер">
+    <meta property="og:description" content="Команда администрации сервера Lumix">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://kotmir.github.io/Kotmirgithub.io/team.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumix">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Команда - Lumix Minecraft сервер">
+    <meta name="twitter:description" content="Команда администрации сервера Lumix">
+    <meta name="twitter:image" content="img/logo.jpg">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="Команда сервера Lumix - администрация, модерация, проводники">
+    <meta name="keywords" content="minecraft, команда, lumix, сервер, майнкрафт, администрация">
+    
+    <!-- Стили и шрифты -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+
+
+
+.cta-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cta-btn-primary {
+    transition: all 0.3s ease !important;
+}
+
+.cta-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(201, 95, 91, 0.4);
+}
+
+.cta-btn-secondary {
+    transition: all 0.3s ease !important;
+}
+
+.cta-btn-secondary:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: var(--accent) !important;
+}
+
+.cta-icon {
+    transition: transform 0.3s ease;
+}
+
+.cta-card:hover .cta-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+        /* Уникальные стили для страницы команды */
+        .team-section {
+            margin-bottom: 60px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .member-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--accent-light);
+        }
+        
+        .member-role {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .member-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .role-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .owner-badge {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #000;
+        }
+        
+        .admin-badge {
+            background: linear-gradient(135deg, #ef4444, #f87171);
+        }
+        
+        .moderator-badge {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+        }
+        
+        .helper-badge {
+            background: linear-gradient(135deg, #10b981, #34d399);
+        }
+    </style>
+</head>
+<body>
+  <!-- Кнопка мобильного меню -->
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Боковая навигация -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">
+            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+            <div class="logo-text">Lumix</div>
+        </div>
+        <div class="sidebar-theme-toggle">
+            <button class="theme-btn" id="themeToggle" title="Сменить тему">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Главное меню -->
+    <div class="nav-main">
+        <!-- Правила -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gavel"></i> Правила</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="rules.html"><i class="fas fa-balance-scale"></i> Политика сервера</a></li>
+                <li><a href="punishments.html"><i class="fas fa-exclamation-triangle"></i> Система наказаний</a></li>
+                <li><a href="admin-rules.html"><i class="fas fa-user-shield"></i> Для администрации</a></li>
+                <li><a href="guide-rules.html"><i class="fas fa-user-graduate"></i> Для проводников</a></li>
+            </ul>
+        </div>
+
+        <!-- Крафты -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-hammer"></i> Крафты</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="crafts.html"><i class="fas fa-tools"></i> Уникальные крафты</a></li>
+                <li><a href="brewery.html"><i class="fas fa-wine-bottle"></i> Brewery</a></li>
+            </ul>
+        </div>
+        
+        <!-- Игровой процесс -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gamepad"></i> Игровой процесс</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="behavior.html"><i class="fas fa-palette"></i> Ман-Арты и картины</a></li>
+                <li><a href="features.html"><i class="fas fa-star"></i> Фишки сервера</a></li>
+                <li><a href="kingdom.html"><i class="fas fa-crown"></i> Королевство</a></li>
+            </ul>
+        </div>
+        
+        <!-- Команды -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-terminal"></i> Команды</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="commands.html"><i class="fas fa-list"></i> Все команды</a></li>
+                <li><a href="chat.html"><i class="fas fa-comments"></i> Чат и взаимодействие</a></li>
+            </ul>
+        </div>
+        
+        <!-- Сообщество -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-users"></i> Сообщество</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="history.html"><i class="fas fa-history"></i> История сервера</a></li>
+                <li><a href="team.html"><i class="fas fa-users-cog"></i> Команда сервера</a></li>
+                <li><a href="content-creator.html"><i class="fas fa-video"></i> Контент-мейкеры</a></li>
+                <li><a href="moderator.html"><i class="fas fa-user-shield"></i> Стать модератором</a></li>
+            </ul>
+        </div>
+        
+        <!-- Магазин и услуги -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-shopping-cart"></i> Магазин</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="shop.html"><i class="fas fa-gem"></i> Донат услуги</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Техническое -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-cogs"></i> Техническое</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="mods.html"><i class="fas fa-plug"></i> Модификации</a></li>
+                <li><a href="resourcepack.html"><i class="fas fa-paint-brush"></i> РесурсПак</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Дополнительное -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-plus-circle"></i> Дополнительное</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="additional.html"><i class="fas fa-info-circle"></i> Доп. информация</a></li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Быстрые ссылки -->
+    <div class="sidebar-quick-links">
+        <div class="quick-links-title">Быстрые ссылки</div>
+        <div class="quick-links">
+            <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+            </a>
+            <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Магазин</span>
+            </a>
+            <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+                <i class="fas fa-map"></i>
+                <span>Карта мира</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <!-- Заголовок страницы -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="section-title">Команда сервера</h1>
+                <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 40px;">
+                    Знакомьтесь с командой, которая делает сервер Lumix таким, какой он есть. 
+                    Наша администрация работает над тем, чтобы каждый игрок чувствовал себя частью дружного сообщества.
+                </p>
+            </div>
+        </section>
+
+        <!-- Высшая администрация -->
+        <section class="section">
+            <div class="container">
+                <div class="team-section">
+                    <h2 class="section-title">Высшая администрация</h2>
+                    
+                    <div class="team-grid">
+                        <!-- Владелец -->
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="role-badge owner-badge">Владелец</div>
+                            <div class="member-name">kotmir</div>
+                            <div class="member-description">
+                                Выполняет ключевую роль в создании и развитии проекта, совмещая обязанности руководителя, 
+                                разработчика, маркетолога и дизайнера. Отвечает за разработку игровых механик, настройку 
+                                плагинов и техническое сопровождение.
+                            </div>
+                        </div>
+
+                        <!-- Тех Администратор -->
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="role-badge admin-badge">Тех Администратор</div>
+                            <div class="member-name">SuperMax321</div>
+                            <div class="member-description">
+                                Создает и оптимизирует плагины, поддерживает серверное ПО, обновляет его до новых версий, 
+                                обеспечивает безопасность от атак, а также улучшает производительность сервера.
+                            </div>
+                        </div>
+
+                        <!-- Администратор -->
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="role-badge admin-badge">Администратор</div>
+                            <div class="member-name">Niukqlo</div>
+                            <div class="member-description">
+                                Координирует работу всей администрации, следит за выполнением обязанностей. Решает важные 
+                                вопросы, связанные с игровым процессом, конфликтами и т.д., принимает ключевые решения и 
+                                обеспечивает стабильность проекта.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Модерация сервера -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="team-section">
+                    <h2 class="section-title">Модерация сервера</h2>
+                    
+                    <div class="team-grid">
+                        <!-- Главный модератор -->
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="role-badge moderator-badge">Главный модератор</div>
+                            <div class="member-name">klerkman_</div>
+                            <div class="member-description">
+                                Контроль работы модераторов, обучение новых модераторов, разработка и обновление правил, 
+                                разрешение конфликтов, подбор новых модераторов, анализ активности на сервере, коммуникация 
+                                с администрацией, организация мероприятий, мониторинг контента, отчетность о работе.
+                            </div>
+                        </div>
+
+                        <!-- Модератор -->
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div class="role-badge moderator-badge">Модератор</div>
+                            <div class="member-name">FHEFhef</div>
+                            <div class="member-description">
+                                Следит за соблюдением правил сообщества, удаляет нежелательный контент, разрешает конфликты, 
+                                отвечает на вопросы пользователей и поддерживает порядок в обсуждениях.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Проводники -->
+        <section class="section">
+            <div class="container">
+                <div class="team-section">
+                    <h2 class="section-title">Проводники</h2>
+                    
+                    <div class="team-grid">
+                        <!-- Главный проводников -->
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="role-badge helper-badge">Главный проводников</div>
+                            <div class="member-name">Gromeeeeeeeeeet</div>
+                            <div class="member-description">
+                                Набор и обучение проводников, контроль их работы, оценка эффективности, применение 
+                                дисциплинарных мер, организация обучения и инструктажей, мониторинг работы проводников, 
+                                обеспечение стандартов обслуживания, предоставление обратной связи, разрешение конфликтов.
+                            </div>
+                        </div>
+
+                        <!-- Проводник -->
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="role-badge helper-badge">Проводник</div>
+                            <div class="member-name">yaxxt</div>
+                            <div class="member-description">
+                                Принятие в вайт лист и проверку новых игроков. Помощь новичкам в освоении сервера, 
+                                ответы на вопросы и обеспечение комфортного старта для всех новых участников сообщества.
+                            </div>
+                        </div>
+
+                        <!-- Практикант -->
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="role-badge">Практикант</div>
+                            <div class="member-name">Набор открыт</div>
+                            <div class="member-description">
+                                Стажер на обучании в проводники. Проходит обучение и подготовку для дальнейшей работы 
+                                в команде проводников. Помогает текущим проводникам и изучает все аспекты работы с сообществом.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- Стать частью команды -->
+<section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">Стать частью команды</h2>
+        
+        <div class="steps">
+            <div class="step-card">
+                <div class="step-number"><i class="fas fa-file-alt"></i></div>
+                <h3>Подать заявку</h3>
+                <p>Заполните заявку на интересующую вас должность в соответствующем разделе Discord сервера.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number"><i class="fas fa-comments"></i></div>
+                <h3>Собеседование</h3>
+                <p>Пройдите собеседование с текущими членами администрации для оценки ваших навыков и мотивации.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number"><i class="fas fa-graduation-cap"></i></div>
+                <h3>Обучение</h3>
+                <p>Пройдите обучение и испытательный срок, чтобы полностью освоить свои обязанности.</p>
+            </div>
+        </div>
+        
+        <!-- Карточка призыва к действию -->
+        <div class="cta-card" style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(42, 42, 42, 0.6)); border-radius: 20px; padding: 50px; margin: 50px auto; max-width: 800px; text-align: center; border: 2px solid var(--accent); position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+            <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 50%; opacity: 0.1;"></div>
+            <div style="position: absolute; bottom: -30px; left: -30px; width: 100px; height: 100px; background: linear-gradient(135deg, var(--accent-light), var(--accent)); border-radius: 50%; opacity: 0.1;"></div>
+            
+            <div class="cta-icon" style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 50%; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+                <i class="fab fa-discord"></i>
+            </div>
+            
+            <h3 style="color: var(--accent-light); font-size: 2rem; margin-bottom: 15px; font-weight: 700;">Готовы присоединиться к команде?</h3>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6;">
+                Присоединяйтесь к нашей дружной команде и помогите сделать сервер Lumix еще лучше! 
+                Мы ищем активных, ответственных и целеустремленных людей, готовых развиваться вместе с нами.
+            </p>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://discord.gg/WHtWNdej2j" class="cta-btn-primary" style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: white; padding: 18px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(201, 95, 91, 0.3);">
+                    <i class="fab fa-discord" style="font-size: 1.3rem;"></i>
+                    Подать заявку в Discord
+                </a>
+                
+                <a href="moderator.html" class="cta-btn-secondary" style="display: inline-flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 18px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; border: 2px solid var(--border);">
+                    <i class="fas fa-info-circle" style="font-size: 1.1rem;"></i>
+                    Узнать подробнее
+                </a>
+            </div>
+            
+            <div style="margin-top: 25px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 8px; color: var(--text-secondary);">
+                    <i class="fas fa-clock" style="color: var(--accent);"></i>
+                    <span>Быстрый отклик</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; color: var(--text-secondary);">
+                    <i class="fas fa-users" style="color: var(--accent);"></i>
+                    <span>Дружная команда</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; color: var(--text-secondary);">
+                    <i class="fas fa-rocket" style="color: var(--accent);"></i>
+                    <span>Развитие с нами</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Футер -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <div class="footer-logo">
+                            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                            Lumix
+                        </div>
+                        <p style="color: var(--text-secondary);">Около-ванильный Minecraft сервер с уникальными механиками и дружелюбным сообществом.</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Навигация</h4>
+                        <div class="footer-links">
+                            <a href="index.html">Главная</a>
+                            <a href="commands.html">Команды</a>
+                            <a href="content-creator.html">Контент-мейкеры</a>
+                            <a href="rules.html">Правила</a>
+                            <a href="shop.html">Магазин</a>
+                            <a href="moderator.html">Стать модератором</a>
+                            <a href="mods.html">Запрещенные моды</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Ссылки</h4>
+                        <div class="footer-links">
+                            <a href="https://discord.gg/WHtWNdej2j">Discord</a>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                            <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
+                            <a href="https://t.me/lumixsmp">Telegram</a>
+                            <a href="http://193.23.199.39:25820/">Карта мира</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 Lumix. Все права защищены.<br>
+                    Сервер не аффилирован с Mojang Studios. Minecraft является товарным знаком Mojang Studios.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Мобильное меню
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+
+mobileMenuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+// Закрытие меню при клике на контент на мобильных устройствах
+if (window.innerWidth <= 1024) {
+    mainContent.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+}
+
+// Аккордеон для боковой панели
+const navSections = document.querySelectorAll('.nav-section-title');
+
+navSections.forEach(section => {
+    section.addEventListener('click', () => {
+        const parent = section.parentElement;
+        // Закрываем все остальные секции
+        document.querySelectorAll('.nav-section').forEach(sec => {
+            if (sec !== parent) {
+                sec.classList.remove('active');
+            }
+        });
+        // Открываем/закрываем текущую
+        parent.classList.toggle('active');
+    });
+});
+
+// Подсветка активной страницы
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const navLinks = document.querySelectorAll('.nav-subitems a');
+
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+        // Автоматически открываем родительскую секцию
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    }
+});
+
+// Переключение темы
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Применяем сохраненную тему
+if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    
+    const isLight = document.body.classList.contains('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Автоматически открываем активный раздел при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const activeLinks = document.querySelectorAll('.nav-subitems a.active');
+    activeLinks.forEach(link => {
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    });
+});
+    </script>
+</body>
+</html>

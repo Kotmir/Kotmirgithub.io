@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила - Lumix Minecraft сервер</title>
+    
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+    
+    <!-- Open Graph разметка -->
+    <meta property="og:title" content="Правила - Lumix Minecraft сервер">
+    <meta property="og:description" content="Правила и политика сервера Lumix">
+    <meta property="og:image" content="img/logo.jpg">
+    <meta property="og:url" content="https://kotmir.github.io/Kotmirgithub.io/rules.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumix">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Правила - Lumix Minecraft сервер">
+    <meta name="twitter:description" content="Правила и политика сервера Lumix">
+    <meta name="twitter:image" content="img/logo.jpg">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="description" content="Правила сервера Lumix - политика, наказания, поведение игроков">
+    <meta name="keywords" content="minecraft, правила, lumix, сервер, майнкрафт, политика">
+    
+    <!-- Стили и шрифты -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Уникальные стили для страницы правил */
+        .rules-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .rule-category {
+            margin-bottom: 50px;
+        }
+        
+        .rule-item {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .rule-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .rule-punishment {
+            color: var(--warning);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 4px;
+            border-left: 3px solid var(--warning);
+        }
+        
+        .rule-severe {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
+            border-left: 4px solid var(--error);
+        }
+        
+        .rule-severe .rule-title {
+            color: var(--error);
+        }
+    </style>
+</head>
+<body>
+   <!-- Кнопка мобильного меню -->
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Боковая навигация -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">
+            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+            <div class="logo-text">Lumix</div>
+        </div>
+        <div class="sidebar-theme-toggle">
+            <button class="theme-btn" id="themeToggle" title="Сменить тему">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Главное меню -->
+    <div class="nav-main">
+        <!-- Правила -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gavel"></i> Правила</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="rules.html"><i class="fas fa-balance-scale"></i> Политика сервера</a></li>
+                <li><a href="punishments.html"><i class="fas fa-exclamation-triangle"></i> Система наказаний</a></li>
+               <li><a href="admin-rules.html"><i class="fas fa-user-shield"></i> Для администрации</a></li>
+               <li><a href="guide-rules.html"><i class="fas fa-user-graduate"></i> Для проводников</a></li>
+            </ul>
+        </div>
+
+        <!-- Крафты -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-hammer"></i> Крафты</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="crafts.html"><i class="fas fa-tools"></i> Уникальные крафты</a></li>
+                <li><a href="brewery.html"><i class="fas fa-wine-bottle"></i> Brewery</a></li>
+            </ul>
+        </div>
+        
+        <!-- Игровой процесс -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-gamepad"></i> Игровой процесс</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="behavior.html"><i class="fas fa-palette"></i> Ман-Арты и картины</a></li>
+                <li><a href="features.html"><i class="fas fa-star"></i> Фишки сервера</a></li>
+                <li><a href="kingdom.html"><i class="fas fa-crown"></i> Королевство</a></li>
+            </ul>
+        </div>
+        
+        <!-- Команды -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-terminal"></i> Команды</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="commands.html"><i class="fas fa-list"></i> Все команды</a></li>
+                <li><a href="chat.html"><i class="fas fa-comments"></i> Чат и взаимодействие</a></li>
+            </ul>
+        </div>
+        
+        <!-- Сообщество -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-users"></i> Сообщество</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="history.html"><i class="fas fa-history"></i> История сервера</a></li>
+                <li><a href="team.html"><i class="fas fa-users-cog"></i> Команда сервера</a></li>
+                <li><a href="content-creator.html"><i class="fas fa-video"></i> Контент-мейкеры</a></li>
+                <li><a href="moderator.html"><i class="fas fa-user-shield"></i> Стать модератором</a></li>
+            </ul>
+        </div>
+        
+        <!-- Магазин и услуги -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-shopping-cart"></i> Магазин</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="shop.html"><i class="fas fa-gem"></i> Донат услуги</a></li>
+               
+            </ul>
+        </div>
+        
+        <!-- Техническое -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-cogs"></i> Техническое</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="mods.html"><i class="fas fa-plug"></i> Модификации</a></li>
+                <li><a href="resourcepack.html"><i class="fas fa-paint-brush"></i> РесурсПак</a></li>
+                
+            </ul>
+        </div>
+        
+        <!-- Дополнительное -->
+        <div class="nav-section">
+            <div class="nav-section-title">
+                <span><i class="fas fa-plus-circle"></i> Дополнительное</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="nav-subitems">
+                <li><a href="additional.html"><i class="fas fa-info-circle"></i> Доп. информация</a></li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Быстрые ссылки -->
+    <div class="sidebar-quick-links">
+        <div class="quick-links-title">Быстрые ссылки</div>
+        <div class="quick-links">
+            <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+            </a>
+            <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Магазин</span>
+            </a>
+            <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+                <i class="fas fa-map"></i>
+                <span>Карта мира</span>
+            </a>
+        </div>
+    </div>
+</nav>
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <!-- Заголовок страницы -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="section-title">Правила сервера</h1>
+                <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 40px;">
+                    Прочтение и соблюдение правил обязательно для всех участников. Игнорирование правил ведет к наказаниям.
+                </p>
+            </div>
+        </section>
+
+        <!-- Общие положения -->
+<section class="section">
+    <div class="container">
+        <div class="rules-container">
+            <div class="rule-category">
+                <h2 class="section-subtitle">Общие положения</h2>
+                
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-check-circle"></i> 1.1 Согласие с правилами</div>
+                    <p>Участвуя в жизни нашего сервера, вы автоматически соглашаетесь с настоящими правилами. В случае несогласия — прекратите использование сервера и покиньте его.</p>
+                </div>
+                
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-info-circle"></i> 1.2 Условия предоставления услуг</div>
+                    <p>Сервис предоставляется бесплатно и в состоянии «как есть». Администрация не гарантирует бесперебойную работу или отсутствие ошибок.</p>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-exclamation-triangle"></i> 1.3 Исключительные случаи</div>
+                    <p>Администрация оставляет за собой право отступать от правил в исключительных случаях: для защиты сервера, устранения угроз или форс-мажоров. При этом интересы игроков не пострадают.</p>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-shield-alt"></i> 1.4 Ответственность администрации</div>
+                    <p>Администрация не несет ответственности за временные или постоянные ограничения в доступе, технические неполадки, невозможность входа у отдельных игроков или групп.</p>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-user-check"></i> 1.5 Обязанности участников</div>
+                    <p>Все участники обязаны соблюдать требования администрации и следовать правилам сервера.</p>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-ban"></i> 1.6 Блокировка аккаунтов</div>
+                    <p>Администрация вправе блокировать аккаунты за нарушение правил или неподобающее поведение.</p>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-balance-scale"></i> 1.7 Спорные ситуации</div>
+                    <p>В любых спорных или неописанных правилами ситуациях окончательное решение принимает администрация.</p>
+                </div>
+            </div>
+            
+            <!-- Правила аккаунтов -->
+            <div class="rule-category">
+                <h2 class="section-subtitle">Правила аккаунтов</h2>
+                
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-user"></i> 2.1 Никнеймы и скины</div>
+                    <p>Запрещено использовать ники с нецензурной лексикой, оскорблениями или провокациями, использовать ники, похожие на ники администрации, применять 18+ скины или скины с запрещённой символикой.</p>
+                    <div class="rule-punishment">Наказание: Вечный бан или принудительная смена ника</div>
+                </div>
+                
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-exchange-alt"></i> 2.2 Безопасность аккаунта</div>
+                    <p>Запрещено передавать, продавать или обменивать аккаунты, играть с чужого аккаунта, даже с разрешения владельца.</p>
+                    <div class="rule-punishment">Наказание: Вечный бан без предупреждения</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-user-shield"></i> 2.3 Ответственность</div>
+                    <p>Владелец аккаунта несёт полную ответственность за все действия, совершённые с его аккаунта — независимо от того, кто играл.</p>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-globe"></i> 2.4 VPN и прокси</div>
+                    <p>Запрещено использовать VPN, прокси и любые другие способы изменения IP без разрешения администрации.</p>
+                    <div class="rule-punishment">Наказание: Вечный бан</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-users"></i> 2.5 Мультиаккаунты</div>
+                    <p>Запрещено создавать дополнительные аккаунты для обхода наказаний, использовать более одного аккаунта без разрешения администрации.</p>
+                    <div class="rule-punishment">Наказание: Бан всех связанных аккаунтов</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-bullhorn"></i> 2.6 Реклама в никах</div>
+                    <p>Запрещено указывать в нике рекламу любых сторонних ресурсов (Discord, соцсети и т.д.).</p>
+                    <div class="rule-punishment">Наказание: Смена ника или бан</div>
+                </div>
+            </div>
+
+            <!-- Правила игры -->
+            <div class="rule-category">
+                <h2 class="section-subtitle">Правила игры</h2>
+                
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-user-times"></i> 3.1 Обман и мошенничество</div>
+                    <p>Запрещено обманывать других игроков, вводить в заблуждение администрацию.</p>
+                    <div class="rule-punishment">Наказание: Бан на 20 дней</div>
+                </div>
+
+                <div class="rule-item rule-severe">
+                    <div class="rule-title"><i class="fas fa-exclamation-circle"></i> 3.2 Запрещённый контент</div>
+                    <p>Строго запрещено распространять вредоносные ссылки, делиться порнографией или шок-контентом, публиковать любой опасный/вредоносный материал.</p>
+                    <div class="rule-punishment">Наказание: Вечный бан</div>
+                </div>
+
+                <div class="rule-item rule-severe">
+                    <div class="rule-title"><i class="fas fa-code"></i> 3.3 Читы и запрещённые программы</div>
+                    <p>Запрещено использовать читы, устанавливать модификации, скрипты и макросы, дающие нечестное преимущество.</p>
+                    <div class="rule-punishment">Наказание: Вечный бан (разбан возможен только через покупку по решению администрации)</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-user-secret"></i> 3.4 Выдача себя за администрацию</div>
+                    <p>Запрещено выдавать себя за администратора или модератора, использовать ники, намекающие на принадлежность к админ-составу.</p>
+                    <div class="rule-punishment">Наказание: Бан на 5 часов</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-chess-rook"></i> 3.5 Кража из сундуков</div>
+                    <p>Запрещено брать чужие вещи без разрешения, перекладывать ресурсы из чужих сундуков.</p>
+                    <div class="rule-punishment">Наказание: На усмотрение администрации</div>
+                </div>
+
+                <div class="rule-item rule-severe">
+                    <div class="rule-title"><i class="fas fa-money-bill-wave"></i> 3.6 Реальная торговля</div>
+                    <p>Запрещено продавать или покупать игровые предметы/услуги за реальные деньги.</p>
+                    <div class="rule-punishment">Наказание: Вечный бан</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-skull-crossbones"></i> 3.7 Гриф и убийства игроков</div>
+                    <p>Запрещено разрушение построек других игроков (гриф), кража ресурсов, убийство игроков без причины, невозврат вещей после случайного или запрещённого PvP.</p>
+                    <div class="rule-punishment">Наказание: По решению администрации</div>
+                </div>
+            </div>
+
+            <!-- Правила построек -->
+            <div class="rule-category">
+                <h2 class="section-subtitle">Правила построек</h2>
+
+                <div class="rule-item rule-severe">
+                    <div class="rule-title"><i class="fas fa-tachometer-alt"></i> 4.1 Лаг-постройки</div>
+                    <p>Запрещено строить конструкции, вызывающие сильные лаги (исключение: фермы).</p>
+                    <div class="rule-punishment">Наказание: Вечный бан (разбан возможен только через покупку)</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-map-marker-alt"></i> 4.2 Чужая территория</div>
+                    <p>Обязанность покинуть чужую территорию по первому требованию её владельца.</p>
+                    <div class="rule-punishment">Наказание: Решение администрации ("суда")</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-paint-brush"></i> 4.3 Оскорбительные постройки</div>
+                    <p>Запрещено строить объекты с пошлым содержанием, изображать нацистскую/экстремистскую символику.</p>
+                    <div class="rule-punishment">Наказание: 1 предупреждение, далее — бан на 7 дней</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-road"></i> 4.4 Блокировка доступа</div>
+                    <p>Запрещено перекрывать или ограничивать доступ к чужим постройкам/участкам.</p>
+                    <div class="rule-punishment">Наказание: Решение администрации</div>
+                </div>
+
+                <div class="rule-item rule-severe">
+                    <div class="rule-title"><i class="fas fa-bug"></i> 4.5 Использование багов (дюпов)</div>
+                    <p>Запрещено дублировать предметы с использованием багов. Разрешены только дюпы ковров, рельс и песка.</p>
+                    <div class="rule-punishment">Наказание: Вечный бан (разбан возможен через покупку)</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-cogs"></i> 4.6 Порча чужих механизмов</div>
+                    <p>Запрещено ломать или ставить блоки, которые мешают работе чужих механизмов, ферм и т.п.</p>
+                    <div class="rule-punishment">Наказание: Решение администрации</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-store"></i> 4.7 Незаконное использование территории</div>
+                    <p>Запрещено строить фермы, магазины или другие объекты на чужой территории без разрешения владельца.</p>
+                    <div class="rule-punishment">Наказание: Решение администрации</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-fence"></i> 4.8 Защита территории</div>
+                    <p>Рекомендуется отмечать границы своего участка стенами, табличками, блоками или другими обозначениями. Это поможет избежать конфликтов.</p>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-traffic-light"></i> 4.9 Ловушки и PvP-зоны</div>
+                    <p>Разрешено строить ловушки только в специальных PvP-зонах.</p>
+                    <div class="rule-punishment">Наказание: Решение администрации</div>
+                </div>
+            </div>
+
+            <!-- Правила общения -->
+            <div class="rule-category">
+                <h2 class="section-subtitle">Правила общения</h2>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-comment-slash"></i> 5.1 Неприемлемый контент</div>
+                    <p>Запрещены интимные разговоры и непристойности, оскорбления, токсичность, мат, дискриминация по полу, расе, ориентации, религии и т.д., упоминание родственников в оскорбительном контексте.</p>
+                    <div class="rule-punishment">Наказание: Мут 1–7 дней / Бан 2–30 дней</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-bullhorn"></i> 5.2 Реклама и спам</div>
+                    <p>Запрещена реклама сторонних серверов, сайтов, Discord-каналов, флуд, капс, бессмысленные повторы.</p>
+                    <div class="rule-punishment">Наказание: Мут на 10 часов (при рекламе — вечный бан)</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-fire"></i> 5.3 Провокации и конфликты</div>
+                    <p>Запрещены намеренные провокации на нарушение правил, навязчивое, токсичное или агрессивное поведение, "разыгрывание драмы" и разжигание ссор.</p>
+                    <div class="rule-punishment">Наказание: Кик → Мут → Бан (по нарастающей)</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-user-tie"></i> 5.4 Общение с администрацией</div>
+                    <p>Запрещено оскорблять или унижать представителей администрации, выдавать себя за модератора, хелпера или админа.</p>
+                    <div class="rule-punishment">Наказание: Бан от 5 дней до навсегда</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-flag"></i> 5.5 Политические обсуждения</div>
+                    <p>Запрещена пропаганда политических движений и идеологий, обсуждение скандальных или острых политических тем, использование флагов, лозунгов, символики.</p>
+                    <div class="rule-punishment">Наказание: Мут на 1 час / Бан на 5 дней</div>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-title"><i class="fas fa-microphone"></i> 5.6 Голосовой чат</div>
+                    <p>Все вышеуказанные правила также распространяются на голосовой чат.</p>
+                    <div class="rule-punishment">Наказание: Мут от 1 часа до 7 дней</div>
+                </div>
+            </div>
+            
+            <!-- Заключение -->
+            <div class="rule-category">
+                <div class="rule-item" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(129, 140, 248, 0.1)); border-left: 4px solid var(--success);">
+                    <div class="rule-title" style="color: var(--success);"><i class="fas fa-star"></i> Заключение</div>
+                    <p>Администрация оставляет за собой право изменять правила в любое время. Игроки обязаны самостоятельно следить за изменениями. В спорных ситуациях решение администрации является окончательным.</p>
+                    <p style="margin-top: 15px; color: var(--text-secondary); font-style: italic;">
+                        Помните: правила созданы для комфортной игры всех участников. Соблюдайте их и получайте удовольствие от игры на сервере Lumix!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Футер -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <div class="footer-logo">
+                            <img src="img/logo.jpg" alt="Lumix" class="logo-img">
+                            Lumix
+                        </div>
+                        <p style="color: var(--text-secondary);">Около-ванильный Minecraft сервер с уникальными механиками и дружелюбным сообществом.</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Навигация</h4>
+                        <div class="footer-links">
+                            <a href="index.html">Главная</a>
+                            <a href="commands.html">Команды</a>
+                            <a href="content-creator.html">Контент-мейкеры</a>
+                            <a href="rules.html">Правила</a>
+                            <a href="shop.html">Магазин</a>
+                            <a href="moderator.html">Стать модератором</a>
+                            <a href="mods.html">Запрещенные моды</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px;">Ссылки</h4>
+                        <div class="footer-links">
+                            <a href="https://discord.gg/WHtWNdej2j">Discord</a>
+                            <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                            <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
+                            <a href="https://t.me/lumixsmp">Telegram</a>
+                            <a href="http://193.23.199.39:25820/">Карта мира</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 Lumix. Все права защищены.<br>
+                    Сервер не аффилирован с Mojang Studios. Minecraft является товарным знаком Mojang Studios.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+      // Мобильное меню
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+
+mobileMenuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+// Закрытие меню при клике на контент на мобильных устройствах
+if (window.innerWidth <= 1024) {
+    mainContent.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+}
+
+// Аккордеон для боковой панели
+const navSections = document.querySelectorAll('.nav-section-title');
+
+navSections.forEach(section => {
+    section.addEventListener('click', () => {
+        const parent = section.parentElement;
+        // Закрываем все остальные секции
+        document.querySelectorAll('.nav-section').forEach(sec => {
+            if (sec !== parent) {
+                sec.classList.remove('active');
+            }
+        });
+        // Открываем/закрываем текущую
+        parent.classList.toggle('active');
+    });
+});
+
+// Подсветка активной страницы
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const navLinks = document.querySelectorAll('.nav-subitems a');
+
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+        // Автоматически открываем родительскую секцию
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    }
+});
+
+// Переключение темы
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Применяем сохраненную тему
+if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    
+    const isLight = document.body.classList.contains('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Автоматически открываем активный раздел при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const activeLinks = document.querySelectorAll('.nav-subitems a.active');
+    activeLinks.forEach(link => {
+        const parentSection = link.closest('.nav-section');
+        if (parentSection) {
+            parentSection.classList.add('active');
+        }
+    });
+});
+    </script>
+</body>
+</html>
