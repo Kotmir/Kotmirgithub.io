@@ -33,6 +33,62 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
+
+
+
+/* Стили для уведомления о копировании */
+.copy-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--success);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.copy-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Стили для кликабельного IP */
+.server-ip {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    background: rgba(42, 42, 42, 0.6);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-family: monospace;
+    font-size: 1.1rem;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.server-ip:hover {
+    background: rgba(42, 42, 42, 0.8);
+    border-color: var(--accent-light);
+    transform: scale(1.05);
+}
+
+.server-ip:active {
+    transform: scale(0.95);
+}
+
+.ip-label {
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
         /* Уникальные стили для страницы истории */
         .timeline {
             position: relative;
@@ -399,15 +455,15 @@
     <div class="sidebar-quick-links">
         <div class="quick-links-title">Быстрые ссылки</div>
         <div class="quick-links">
-            <a href="https://discord.gg/WHtWNdej2j" class="quick-link" target="_blank">
+            <a href="https://discord.gg/QCQE85Pfy6" class="quick-link" target="_blank">
                 <i class="fab fa-discord"></i>
                 <span>Discord</span>
             </a>
-            <a href="https://boosty.to/multicraft-mtcraft/donate" class="quick-link" target="_blank">
+            <a href="https://boosty.to/kotmir_you" class="quick-link" target="_blank">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Магазин</span>
             </a>
-            <a href="http://193.23.199.39:25820/" class="quick-link" target="_blank">
+            <a href="http://202.181.188.46:25710/" class="quick-link" target="_blank">
                 <i class="fas fa-map"></i>
                 <span>Карта мира</span>
             </a>
@@ -595,10 +651,20 @@
                         Присоединяйтесь к серверу Lumix и оставьте свой след в истории нашего сообщества. 
                         Вместе мы создадим что-то удивительное!
                     </p>
-                    <div class="ip-section" style="margin: 20px auto; max-width: 500px;">
-                        <div class="ip-label">IP сервера:</div>
-                        <div class="server-ip" id="serverIp">lumix.gomc.fun</div>
-                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4)); padding: 30px; border-radius: 10px; border: 1px solid var(--border); margin-top: 40px; backdrop-filter: blur(10px); text-align: center;">
+    <h3 style="color: var(--accent-light); margin-bottom: 15px;">Станьте частью истории</h3>
+    <p style="color: var(--text-secondary); margin-bottom: 20px;">
+        Присоединяйтесь к серверу Lumix и оставьте свой след в истории нашего сообщества. 
+        Вместе мы создадим что-то удивительное!
+    </p>
+    <div class="ip-section" style="margin: 20px auto; max-width: 500px;">
+        <div class="ip-label">IP сервера:</div>
+        <div class="server-ip" id="serverIp" onclick="copyServerIp()">
+            lumix.gomc.fun
+            <i class="fas fa-copy" style="margin-left: 10px; font-size: 0.9rem; opacity: 0.7;"></i>
+        </div>
+    </div>
+</div>
                 </div>
             </div>
         </section>
@@ -629,11 +695,11 @@
                     <div>
                         <h4 style="margin-bottom: 15px;">Ссылки</h4>
                         <div class="footer-links">
-                            <a href="https://discord.gg/WHtWNdej2j">Discord</a>
-                            <a href="https://boosty.to/multicraft-mtcraft/donate">Boosty</a>
+                            <a href="https://discord.gg/QCQE85Pfy6">Discord</a>
+                            <a href="https://boosty.to/kotmir_you">Boosty</a>
                             <a href="https://www.youtube.com/@Lumix_SMP">YouTube</a>
                             <a href="https://t.me/lumixsmp">Telegram</a>
-                            <a href="http://193.23.199.39:25820/">Карта мира</a>
+                            <a href="http://202.181.188.46:25710/">Карта мира</a>
                         </div>
                     </div>
                 </div>
@@ -720,11 +786,100 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+// Функция для копирования IP адреса
+function copyServerIp() {
+    const ip = document.getElementById('serverIp').textContent;
+    const notification = document.getElementById('copyNotification');
+    
+    // Копируем в буфер обмена
+    navigator.clipboard.writeText(ip).then(() => {
+        // Показываем уведомление
+        notification.classList.add('show');
+        
+        // Скрываем уведомление через 2 секунды
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 2000);
+    }).catch(err => {
+        console.error('Ошибка при копировании: ', err);
+        // Fallback для старых браузеров
+        const textArea = document.createElement('textarea');
+        textArea.value = ip;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        // Показываем уведомление
+        notification.classList.add('show');
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 2000);
+    });
+}
+
+// Функция для копирования IP адреса
+function copyServerIp() {
+    const ip = "lumix.gomc.fun"; // Прямо указываем IP
+    const notification = document.getElementById('copyNotification');
+    
+    // Добавляем анимацию нажатия
+    const serverIp = document.getElementById('serverIp');
+    serverIp.style.transform = 'scale(0.95)';
+    
+    setTimeout(() => {
+        serverIp.style.transform = 'scale(1)';
+    }, 150);
+    
+    // Копируем в буфер обмена
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(ip).then(() => {
+            showNotification();
+        }).catch(err => {
+            console.error('Ошибка при копировании: ', err);
+            fallbackCopy(ip);
+        });
+    } else {
+        // Fallback для старых браузеров
+        fallbackCopy(ip);
+    }
+}
+
+function fallbackCopy(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    showNotification();
+}
+
+function showNotification() {
+    const notification = document.getElementById('copyNotification');
+    notification.classList.add('show');
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 2000);
+}
+
+// Добавляем обработчик клика на IP адрес
+document.addEventListener('DOMContentLoaded', () => {
+    const serverIp = document.getElementById('serverIp');
+    if (serverIp) {
+        serverIp.style.cursor = 'pointer';
+        serverIp.title = 'Нажмите чтобы скопировать IP адрес';
+    }
+});
+
     </script>
 
-    <!-- Уведомление о копировании -->
-    <div class="copy-notification" id="copyNotification">
-        IP адрес скопирован!
-    </div>
+  
+</div>
 </body>
 </html>
